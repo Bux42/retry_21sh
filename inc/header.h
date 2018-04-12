@@ -6,14 +6,14 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/11 17:29:50 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 21:46:26 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 # define TERM "xterm-256color"
-# define DEBUG			0
+# define DEBUG			1
 # define TTY_MAX		10000
 
 # define DQUOTE			1
@@ -54,6 +54,7 @@
 # include <signal.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <sys/syslimits.h>
 
 # include "typedef.h"
 # include "hash.h"

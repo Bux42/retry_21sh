@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 06:48:58 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/12 21:38:44 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/12 21:50:09 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 static char	*try_pwd(t_env **env)
 {
-	char	buff[2048];
+	char	buff[PATH_MAX];
 	char	*path;
 
 	if ((path = get_specific_env("PWD=", env)))
 		return (path);
-	getwd(buff);
+	getcwd(buff, PATH_MAX);
 	return (ft_strdup(buff));
 }
 
 int			check_link(char *path, int flag, t_env **env)
 {
-	char	buff[2048];
+	char	buff[PATH_MAX];
 	char	*tmp;
 	char	*getpwd;
 
