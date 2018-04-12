@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 06:31:34 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/12 18:15:14 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 20:05:07 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,7 @@ void		add_delete_letter(t_sh *sh)
 			custom_left(sh);
 		check_endline(sh);
 		inp_insert_posat(&sh->inpl->inp, sh->buff[0]);
-		if (!except)
-			overwrite_remaining(sh, &sh->inpl->inp);
+		overwrite_remaining(sh, &sh->inpl->inp);
 	}
 	else
 		delete_letter(sh, &sh->inpl->inp);

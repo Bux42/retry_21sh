@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 02:12:01 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/07 04:39:46 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 20:04:03 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,27 @@ void		tild_prompt(t_sh *sh)
 	free(sh->home_env);
 }
 
+void		try_pwd(t_sh *sh)
+{
+	char	buff[2048];
+	char	*path;
+
+	if ((path = get_specific_env("PWD=", &sh->env)))
+	{
+		ft_strcat(sh->pwd, path);
+		free(path);
+	}
+	else
+	{
+		getwd(buff);
+		ft_strcat(sh->pwd, buff);
+	}
+}
+
 void		print_prompt(t_sh *sh)
 {
-	char	buff[2049];
-
 	ft_bzero(sh->pwd, 2048);
-	getcwd(buff, 2049);
-	ft_strcat(sh->pwd, buff);
+	try_pwd(sh);
 	sh->posy = 4;
 	prompt_colors(1);
 	sh->width = tgetnum("co");
