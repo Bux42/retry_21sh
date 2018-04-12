@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 02:12:01 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/12 20:04:03 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 21:46:43 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		tild_prompt(t_sh *sh)
 
 void		try_pwd(t_sh *sh)
 {
-	char	buff[2048];
+	char	buff[PATH_MAX];
 	char	*path;
 
 	if ((path = get_specific_env("PWD=", &sh->env)))
@@ -52,7 +52,7 @@ void		try_pwd(t_sh *sh)
 	}
 	else
 	{
-		getwd(buff);
+		getcwd(buff, PATH_MAX);
 		ft_strcat(sh->pwd, buff);
 	}
 }
