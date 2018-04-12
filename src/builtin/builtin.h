@@ -6,7 +6,7 @@
 /*   By: drecours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:01:36 by drecours          #+#    #+#             */
-/*   Updated: 2018/04/10 20:30:15 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 21:38:29 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int		check_flag(int flag, char letter);
 int		parse_flags(char **exec, int *index);
 int		fix_root(char *path);
 int		dir_exists(char *path);
+int		change_pwd(int flag, t_env **env, char *path, int err);
 
 /*
 ** HISTORY TOOLS
