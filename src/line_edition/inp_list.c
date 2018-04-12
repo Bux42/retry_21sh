@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 06:38:04 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/12 18:15:26 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 21:10:12 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		inp_insert_posat(t_inp **inp, char c)
 	else
 	{
 		first = (*inp);
-		while (first->next)
+		while (first->next || first->pos == 2)
 		{
 			if (first->pos)
 			{
