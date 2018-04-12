@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/08 09:43:42 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/08 09:46:57 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 19:40:08 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int			ending_special_char(char c)
 
 int			right_context(int flag)
 {
+	if (flag & 4)
+		return (0);
 	if (flag & QUOTE)
 		return (0);
 	if (flag & DQUOTE)
