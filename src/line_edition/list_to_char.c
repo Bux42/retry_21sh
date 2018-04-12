@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 15:48:39 by videsvau          #+#    #+#             */
-/*   Updated: 2018/03/23 10:32:59 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 21:19:42 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char		*inp_to_char(t_inp **inp, t_sh *sh)
 		while (cp)
 		{
 			ret[i] = cp->c;
-			ft_putchar(ret[i]);
 			i++;
 			cp = cp->next;
 		}
