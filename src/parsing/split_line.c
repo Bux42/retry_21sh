@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 16:36:59 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/10 13:52:28 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/12 19:41:52 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		add_token(t_inpl **inpl, t_inp **cp, t_sh *sh)
 		while ((*cp) && empty_quote(sh->context, cp))
 		{
 			(*cp) = (*cp)->next->next;
-			sh->context = 0;
+			sh->context = 4;
 		}
 		if (!*cp)
 			break ;
