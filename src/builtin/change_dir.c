@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 06:48:58 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/09 12:07:33 by drecours         ###   ########.fr       */
+/*   Updated: 2018/03/30 17:45:53 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ int			change_pwd(int flag, t_env **env, char *path, int err)
 int			check_link(char *path, int flag, t_env **env)
 {
 	char	buff[2048];
-	char	pathcwd[2048];
 	char	*tmp;
+	char	getpwd[2048];
 
-	getcwd(pathcwd, 2048);
 	if (path[0] == '/')
 		path_subcpy(path, buff, 0, ft_strlen(path));
 	else
 	{
-		tmp = path_join(pathcwd, path);
+		getcwd(getpwd, 2048);
+		tmp = path_join(getpwd, path);
 		path_subcpy(tmp, buff, 0, ft_strlen(tmp));
 		free(tmp);
 	}
@@ -98,7 +98,8 @@ int			chdir_old_pwd(t_env **env, int flag)
 		free(old_pwd);
 		if ((pwd = get_specific_env("PWD=", env)) && err == 0)
 		{
-			ft_putendl(pwd);
+			ft_putstr(pwd);
+			custom_return();
 			free(pwd);
 		}
 		return (err);
@@ -129,7 +130,7 @@ int			builtin_cd(char **exec, t_sh *sh)
 			return (err_msg("cd: HOME not set", "", 2));
 	}
 	else if (ft_strcmp(exec[index], "-") == 0)
-		ret = chdir_old_pwd(&sh->env, flag);
+			ret = chdir_old_pwd(&sh->env, flag);
 	else
 		ret = custom_chdir(exec[index], flag, &sh->env);
 	return (ret);
