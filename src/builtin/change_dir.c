@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 06:48:58 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/12 21:50:09 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/13 15:03:16 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int			check_link(char *path, int flag, t_env **env)
 	if (path[0] == '/')
 	{
 		path_subcpy(path, buff, 0, ft_strlen(path));
-		ft_putstr(buff);
 	}
 	else
 	{
@@ -45,7 +44,6 @@ int			check_link(char *path, int flag, t_env **env)
 	}
 	path_eval(buff);
 	resolve_relative_path(env, buff);
-	ft_putstr(buff);
 	if (fix_root(buff) == 0 && dir_exists(buff) != 0)
 		return (change_pwd(flag, env, buff, 1));
 	return (change_pwd(flag, env, buff, 2));
