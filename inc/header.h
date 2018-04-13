@@ -307,6 +307,7 @@ void					exec_cli(char *cli, t_listc *tok, t_sh *sh);
 int						condition_is_valid(t_sh *sh, t_listc *cmd);
 
 void					prepare_pipe(t_listc *cmd);
+void					count_heredoc(t_listc *red);
 void					ft_cmd_pipe(t_listc *cmd, t_sh *i_env);
 void					closed_unused_fd(int fils, int nb_tube, t_pipe *t);
 void					pipe_tmp(t_listc *cmd, int i, t_pipe *t, t_sh *i_env);
