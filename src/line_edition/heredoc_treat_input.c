@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 09:10:03 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/10 11:49:14 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/13 21:11:01 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int			treat_input_here(t_sh *sh, t_inpl **inpl, char *ending)
 	{
 		if (sh->buff[0] > 31)
 			classic_edition(&(*inpl)->inp, g_sh, HERE);
+		if (sh->buff[0] == 4)
+			return (0);
 		else if (sh->buff[0] == 10)
 		{
 			if (!inpl_char_cmp(ending, &(*inpl)->inp))
