@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 06:36:04 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/10 11:51:47 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/13 21:36:22 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		cut_after(t_sh *sh, t_inp **inp)
 
 	if ((cp = get_to_pos(inp)))
 	{
+		sh->ctrl_c = 0;
 		if (cp->next || cp->pos == 2)
 		{
 			if (sh->clipboard)
@@ -93,6 +94,7 @@ void		cut_after(t_sh *sh, t_inp **inp)
 			}
 			restore_cursor_pos(dec, sh);
 		}
+		sh->ctrl_c = 1;
 	}
 }
 

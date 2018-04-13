@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 09:34:40 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/07 08:08:43 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/13 21:40:23 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void		cut_before(t_sh *sh, t_inp **inp)
 
 	if ((cp = get_to_pos(inp)) && cp->pos == 1)
 	{
+		sh->ctrl_c = 0;
 		if (sh->clipboard)
 			free(sh->clipboard);
 		sh->clipboard = get_clipboard_before(cp, &dec, sh);
@@ -104,6 +105,7 @@ void		cut_before(t_sh *sh, t_inp **inp)
 			(*inp) = NULL;
 		}
 		update_cut_before(dec, inp, sh);
+		sh->ctrl_c = 1;
 	}
 }
 
@@ -113,6 +115,7 @@ void		paste_after(t_sh *sh, t_inp **inp)
 	t_inp	*cp;
 
 	i = -1;
+	sh->ctrl_c = 0;
 	if (sh->clipboard[++i])
 		inp_insert_posat(&sh->inpl->inp, sh->clipboard[i]);
 	if ((cp = get_to_pos(inp)))
@@ -126,4 +129,5 @@ void		paste_after(t_sh *sh, t_inp **inp)
 	print_str(sh->clipboard, sh);
 	if (i > 0)
 		overwrite_remaining(sh, inp);
+	sh->ctrl_c = 1;
 }

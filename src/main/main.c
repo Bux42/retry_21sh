@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 05:14:26 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/12 21:32:08 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/13 21:45:30 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		check_pasted(t_sh *sh)
 		sh->search ? treat_input_search(sh) : treat_input(sh);
 	else
 	{
+		sh->ctrl_c = 0;
 		while (sh->buff[++i])
 			buff[i] = sh->buff[i];
 		buff[i] = '\0';
@@ -34,6 +35,7 @@ void		check_pasted(t_sh *sh)
 			sh->buff[0] = buff[i];
 			sh->search ? treat_input_search(sh) : treat_input(sh);
 		}
+		sh->ctrl_c = 1;
 	}
 }
 
@@ -71,6 +73,7 @@ int			find_hist_file(char *man_path)
 	int		fd;
 	char	*cp;
 
+	g_sh->ctrl_c = 1;
 	if (fcntl(0, F_GETFD) == -1)
 		return (-1);
 	if (fcntl(1, F_GETFD) == -1)

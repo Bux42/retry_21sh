@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 09:10:03 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/13 21:11:01 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/13 21:49:00 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ int			treat_input_here(t_sh *sh, t_inpl **inpl, char *ending)
 	sh->pos_at = pos_at(&(*inpl)->inp, sh->prompt_len);
 	if (!check_dimentions(sh))
 		return (0);
-	sh->width = tgetnum("co");
 	if (!sh->buff[1])
 	{
 		if (sh->buff[0] > 31)
