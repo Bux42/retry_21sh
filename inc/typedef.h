@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:30:00 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/11 17:30:01 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/13 21:15:27 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct			s_sh
 {
 	char				*tty;
 	int					tty_fd;
+	int					ctrl_c;
 	char				*home_env;
 	char				*clipboard;
 	char				*comp_debug;

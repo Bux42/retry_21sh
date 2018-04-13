@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/08 12:09:56 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/09 16:08:51 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/13 21:18:04 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ char		**add_here_redir(int redir_type[3], t_inp **eof)
 	redir_type[0] = -1;
 	redir_type[1] = HEREDOC;
 	redir_type[2] = -1;
+	g_sh->ctrl_c = 0;
 	here = get_heredoc(eof);
+	g_sh->ctrl_c = 1;
 	return (here);
 }
 

@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 03:37:40 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/10 17:11:48 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/13 21:16:05 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		free_closing(t_sh *sh, t_close **close)
 
 void		signal_print_prompt(int inp)
 {
+	if (!g_sh->ctrl_c)
+		return ;
 	(void)inp;
 	custom_return();
 	g_sh->retval = 1;
