@@ -5,20 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jamerlin <jamerlin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/03/17 14:50:04 by vboivin           #+#    #+#              #
-#    Updated: 2018/04/13 21:06:43 by videsvau         ###   ########.fr        #
+#    Created: 2017/11/12 02:03:18 by videsvau          #+#    #+#              #
+#    Updated: 2018/04/14 23:09:08 by videsvau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME		=	21sh
 
-NAME		= 21sh
-HPATH		= includes
-INC			= -I$(HPATH) -Ilibft/includes
-FLAGS		= -Wall -Werror -Wextra #-fsanitize=address -g3 #-fbounds-check
-COMP		= gcc
-LIBFT		= -Llibft -lft -lcurses
+CC			=	gcc
+FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address
+D_FLAGS		=	-g
 
-SRCS	=	\
+LIBFT_DIR	=	libft/
+LIBFT_LIB	=	$(LIBFT_DIR)libft.a
+LIBFT_INC	=	$(LIBFT_DIR)includes/
+
+LIBS		=	-ltermcap
+
+SRC_DIR		=	src/
+INC_DIR		=	includes/
+OBJ_DIR		=	objs/
+
+SRC_BASE	=	\
 main/main.c\
 tty_debug/tty_debug.c\
 tty_debug/optimized_tools.c\
@@ -125,63 +133,60 @@ hash/hash.c\
 hash/hash_functions.c\
 hash/init_hash.c
 
-RED='\e[1;31m'
-GRN='\e[1;32m'
-YEL='\e[1;33m'
-BLU='\e[1;34m'
-MAG='\e[1;35m'
-CYN='\e[1;36m'
-END='\e[0m'
+SRCS		=	$(addprefix $(SRC_DIR), $(SRC_BASE))
+OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
+NB			=	$(words $(SRC_BASE))
+INDEX		=	0
 
-DIR_SRC		= $(addprefix $(SRCPATH)/, $(SRCS))
-SRCPATH		= src
+all :
+	@make -C $(LIBFT_DIR)
+	@make -j $(NAME)
 
-OBJ 		= $(SRCS:.c=.o)
-OBJPATH		= objs
-DIR_OBJ		= $(addprefix $(OBJPATH)/, $(OBJ))
+$(NAME):		$(LIBFT_LIB) $(OBJ_DIR) $(OBJS)
+	@$(CC) $(OBJS) -o $(NAME) \
+		-I $(INC_DIR) \
+		-I $(LIBFT_INC) \
+		$(LIBS) \
+		$(LIBFT_LIB) \
+		$(FLAGS) $(D_FLAGS)
+	@strip -x $@
+	@printf "\r\033[48;5;15;38;5;25m✅  MAKE $(NAME)\033[0m\033[K\n"
 
-all: $(NAME)
+$(LIBFT_LIB):
+	@make -C $(LIBFT_DIR)
 
-$(OBJPATH)/%.o: $(SRCPATH)/%.c
-	@printf "\33[KCompiling `printf $(RED)`$<`printf $(END)`\r"
-	@$(COMP) $(FLAGS) -MMD -c $< -o $@ $(INC)
+$(OBJ_DIR) :
+	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $(OBJS))
 
-make_objs:
-	@mkdir -p $(OBJPATH)
-	@mkdir -p $(dir $(DIR_OBJ))
+$(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
+	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
+	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
+	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
+	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
+	@$(CC) $(FLAGS) $(D_FLAGS) -MMD -c $< -o $@\
+		-I $(INC_DIR)\
+		-I $(LIBFT_INC)
+	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
-$(NAME): make_objs $(DIR_OBJ)
-	@printf "\33[Kmain obj compil:\t`printf $(GRN)`done\t✅`printf $(END)`\n"
-	@make -C libft
-	@printf "\33[Klibft compil:\t\t`printf $(GRN)`done\t✅`printf $(END)`\n"
-	@echo "videsvau:drecours:vboivin:jamerlin" > auteur
-	@$(COMP) $(DIR_OBJ) -o $(NAME) $(INCMAC) $(LIBFT) $(FLAGS) 
-	@printf "main compilation:\t`printf $(GRN)`done\t✅`printf $(END)`\n"
+clean:			cleanlib
+	@rm -rf $(OBJ_DIR)
+	@printf "\r\033[38;5;202m✖ clean $(NAME).\033[0m\033[K\n"
 
-clean:
-	@make clean -C libft
-	@rm -rf $(DIR_OBJ)
+cleanlib:
+	@make -C $(LIBFT_DIR) clean
 
-fclean: rmtest
-	@printf "\33[K`printf $(RED)`Crushing \t\t\t☠️`printf $(END)`\r"
-	@make fclean -C libft
-	@rm -rf $(OBJPATH)
-	@rm -rf $(NAME)
-	@printf "\33[K`printf $(GRN)`Crushing done\t\t\t🗑️`printf $(END)`\n"
+fclean:			clean fcleanlib
+	@rm -f $(NAME)
+	@printf "\r\033[38;5;196m ❌ fclean $(NAME).\033[0m\033[K\n"
 
-test:
-	@mkdir test_dir
-	@mkdir test_dir/test_rec
-	@mkdir test_dir/test_rec2
-	@touch test_dir/test_file
-	@touch test_dir/test_file2
-	@chmod 7000 test_dir/test_file
-	@chmod 7777 test_dir/test_file2
-	@ln -s test_dir/test_file test_dir/test_link
+fcleanlib:		cleanlib
+	@make -C $(LIBFT_DIR) fclean
 
-rmtest:
-	@rm -rf test_dir
+re:				fclean all
 
-re: fclean all
+relib:			fcleanlib $(LIBFT_LIB)
 
-.PHONY :			fclean clean re all make_objs test rmtest
+.PHONY :		fclean clean re relib cleanlib fcleanlib
+
+-include $(OBJS:.o=.d)
