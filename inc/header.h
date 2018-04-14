@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/13 15:16:00 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 19:32:24 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,8 @@ int						escaped(t_inp **inp);
 int						special_tok(char c);
 int						ending_special_char(char c);
 int						redir(t_inp *inp);
-int						check_quoting(char c);
+int						check_quoting(t_inp **cp, int context);
+int						empty_quote(int context, t_inp **inp);
 int						right_context(int context);
 int						check_key(char key);
 int						try_update_context(char c, int flag);

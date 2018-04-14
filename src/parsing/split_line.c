@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 16:36:59 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/13 15:15:39 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 20:17:22 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,18 @@ void		add_token(t_inpl **inpl, t_inp **cp, t_sh *sh)
 	add = NULL;
 	while (*cp)
 	{
-		if (check_quoting((*cp)->c) && !escaped(cp))
+		if (check_quoting(cp, sh->context) && !escaped(cp))
 			sh->context = try_update_context((*cp)->c, sh->context);
-		if (right_context(sh->context) && ending_char((*cp)->c) &&
+		if (*cp && right_context(sh->context) && ending_char((*cp)->c) &&
 				!escaped(cp))
 			break ;
-		while ((*cp) && empty_quote(sh->context, cp))
-		{
-			(*cp) = (*cp)->next->next;
-			sh->context = sh->context | 4;
-		}
 		if (!*cp)
 			break ;
 		inp_insert_posat_remake(&add, (*cp)->c);
 		(*cp) = (*cp)->next;
 	}
 	if (add)
-	{
-		ft_putchar('[');
-		print_t_inp(&add);
-		ft_putchar(']');
 		inpl_push_back(inpl, &add, 0);
-	}
 }
 
 void		add_special_token(t_inpl **inpl, t_inp **cp)

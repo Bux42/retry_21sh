@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/08 09:43:42 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/12 19:40:08 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 19:25:32 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int			right_context(int flag)
 	return (1);
 }
 
-int			check_quoting(char c)
+int			check_quoting(t_inp **cp, int context)
 {
-	if (c == '\'')
+	while (*cp && empty_quote(context, cp) && !escaped(cp))
+		*cp = (*cp)->next->next;
+	if (*cp && (*cp)->c == '\'' && !escaped(cp))
 		return (1);
-	if (c == '\"')
-		return (1);
-	if (c == '`')
+	if (*cp && (*cp)->c == '\"' && !escaped(cp))
 		return (1);
 	return (0);
 }
