@@ -6,14 +6,14 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/14 21:00:26 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 23:31:22 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 # define TERM "xterm-256color"
-# define DEBUG			1
+# define DEBUG			0
 # define TTY_MAX		10000
 
 # define DQUOTE			1
@@ -184,6 +184,7 @@ int						get_diff(char *fl, t_sh *sh);
 void					print_completion_builtin(t_sh *s, t_inp *i, t_bin **b);
 void					delete_remain(t_sh *sh, char *remain);
 int						complete_builtin(t_inp **inp);
+int						escape_char(char c);
 void					found(t_sh *sh, DIR *od, struct dirent *fl, t_inp *cp);
 void					insert_completion(t_sh *sh, t_inp **inp);
 void					erase_completion(t_sh *sh, t_inp **inp);
