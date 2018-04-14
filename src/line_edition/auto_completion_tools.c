@@ -6,7 +6,7 @@
 /*   By: drecours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 14:56:37 by drecours          #+#    #+#             */
-/*   Updated: 2018/04/11 11:43:48 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 23:44:14 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ void		insert_completion(t_sh *sh, t_inp **inp)
 			i = -1;
 			while (sh->comp_remain[++i])
 			{
+				if (escape_char(sh->comp_remain[i]))
+				{
+					ft_putchar('\\');
+					inp_insert_posat(&sh->inpl->inp, '\\');
+					check_endline(sh);
+				}
 				inp_insert_posat(&sh->inpl->inp, sh->comp_remain[i]);
 				ft_putchar(sh->comp_remain[i]);
 				check_endline(sh);

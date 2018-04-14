@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/19 20:23:08 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/09 14:57:10 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/14 23:56:32 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int			left_word_len(int *slash, t_inp **cp)
 	int		i;
 
 	i = 1;
-	while ((*cp)->previous && !is_space((*cp)->previous->c))
+	while ((*cp)->previous)
 	{
+		if (is_space((*cp)->previous->c) && !escaped(&(*cp)->previous, 0))
+			break ;
 		if ((*cp)->previous->c == '/')
 		{
 			(*slash)++;
@@ -72,7 +74,7 @@ void		erase_completion(t_sh *sh, t_inp **inp)
 			cp = cp->next;
 		}
 	}
-	dec += ft_strlen(sh->comp_remain);
+	dec += ft_strlen(sh->comp_remain) + 1;
 	free_comp(1, sh);
 	print_spaces(dec, sh);
 	while (dec--)

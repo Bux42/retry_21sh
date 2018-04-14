@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 02:01:15 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/11 11:25:03 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 23:46:18 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,36 @@ int			get_diff(char *fl, t_sh *sh)
 	return (0);
 }
 
+int			escape_char(char c)
+{
+	if (c == ' ')
+		return (1);
+	if (c == '!' || c == '?')
+		return (1);
+	if (c == '$')
+		return (1);
+	if (c == '^' || c == '=')
+		return (1);
+	if (c == '&' || c == '\\')
+		return (1);
+	if (c == '*' || c == ';')
+		return (1);
+	if (c == '(' || c == ')' || c == '{' || c == '}')
+		return (1);
+	if (c == '\'' || c == '\"' || c == '`')
+		return (1);
+	if (c == '[' || c == ']')
+		return (1);
+	if (c == '<' || c == '>')
+		return (1);
+	return (0);
+}
+
 void		found(t_sh *sh, DIR *od, struct dirent *fl, t_inp *cp)
 {
+	int		escape;
+
+	escape = 0;
 	sh->over = get_diff(fl->d_name, sh);
 	if (ft_strlen(sh->comp_debug) == ft_strlen(fl->d_name))
 		return ((void)free_comp(3, sh));
@@ -61,10 +89,17 @@ void		found(t_sh *sh, DIR *od, struct dirent *fl, t_inp *cp)
 	sh->comp_remain = ft_strdup(&fl->d_name[ft_strlen(sh->comp_debug)]);
 	while (sh->comp_remain[++sh->dec])
 	{
+		if (escape_char(sh->comp_remain[sh->dec]))
+		{
+			ft_putchar('\\');
+			check_endline(sh);
+			escape++;
+		}
 		ft_putchar(sh->comp_remain[sh->dec]);
 		check_endline(sh);
 	}
 	write(1, "\x1b[0m", 5);
+	sh->dec += escape;
 	while (cp)
 	{
 		sh->dec++;
