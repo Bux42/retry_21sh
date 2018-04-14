@@ -66,7 +66,8 @@ void	exec_cli(char *cli, t_listc *cmd, t_sh *sh)
 
 	sh->pid = 0;
 	fullpath = NULL;
-	if (!(tabtube = new_tabtube(cmd->nb_arg)))
+	/*count_heredoc(cmd);*/
+	if (!(tabtube = new_tabtube(cmd->nb_arg /*+ cmd->nb_here*/)))
 		return ;
 	if (cmd->redirs && cmd->redirs->redir[1] == HEREDOC)
 		heredock_redirect(cmd, tabtube, 0);
@@ -76,7 +77,7 @@ void	exec_cli(char *cli, t_listc *cmd, t_sh *sh)
 		fork_exec(fullpath, cmd, tabtube, sh);
 	else
 	{
-		sh->retval = -1;
+		sh->retval = 127;
 		return ((void)close_tabtube(cmd->nb_arg, tabtube));
 	}
 	waitpid(sh->pid, &sh->retval, WUNTRACED);

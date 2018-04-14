@@ -34,6 +34,7 @@ typedef struct			s_list_c
 	char				**cont;
 	void				*func;
 	int					nb_arg;
+	int					nb_here;
 	t_redir				*redirs;
 	int					status;
 	struct s_list_c		*prev;

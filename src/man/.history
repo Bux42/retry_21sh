@@ -10,3 +10,72 @@ history -334
 echo plopt 
  choe
  choe
+ls
+echo $?
+exit
+fds
+echo $?
+fds
+ls
+ls && fsda || ls
+exit
+ls && fsda || ls
+exit
+ls && fsd || ls
+exit
+ls && fsd || ls
+exit
+ls && fsd || ls
+exit
+ls && fsd || ls
+exit
+ls && fsd || ls
+exit
+ls
+ls || ls
+ls && ls
+ls && ls || ls
+ls && ls && ls
+ls && ls && ls || ls -z
+ls && ls && ls && ls -z
+ls && ls && ls && ls -z || ls
+exit
+ls && ls && ls && ls -z || ls
+exit
+ls && fsd || ls
+ls && fsd && ls
+exit
+ls && fsd && ls
+ls && fsd || ls
+ls && ls
+ls && fsd || ls
+echo $?
+ls && fsd
+echo $?
+exit
+echo << a a << b b
+sort << a a << b b
+sort << a
+sort << a a << fin
+exit
+sort << FIN
+sort << FIN > test
+cat file
+ls
+ls
+exit
+ls
+cat << fin
+exit
+ls
+ls << fin
+sort << fin
+echo << a a << b b
+echo << a a << b b
+ls
+echo << a a << b b
+sort << fin << xd
+exit
+cat << fin
+ls
+exit
