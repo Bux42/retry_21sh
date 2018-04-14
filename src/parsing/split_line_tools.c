@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/08 09:43:42 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/14 19:25:32 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 22:02:15 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ int			right_context(int flag)
 
 int			check_quoting(t_inp **cp, int context)
 {
-	while (*cp && empty_quote(context, cp) && !escaped(cp))
+	while (*cp && empty_quote(context, cp) && !escaped(cp, context))
 		*cp = (*cp)->next->next;
-	if (*cp && (*cp)->c == '\'' && !escaped(cp))
+	if (*cp && (*cp)->c == '\'' && !escaped(cp, context))
 		return (1);
-	if (*cp && (*cp)->c == '\"' && !escaped(cp))
+	if (*cp && (*cp)->c == '\"' && !escaped(cp, context))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/14 19:32:24 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 21:00:26 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,7 @@ int						inp_cmp(t_inp **inp, char *str);
 void					try_insert_variable(t_inp **inp, t_sh *sh);
 void					try_insert_home(t_inp **inp, t_sh *sh);
 void					split_line(t_inpl **inpl, t_inp **clean, t_sh *sh);
-int						escaped(t_inp **inp);
+int						escaped(t_inp **inp, int context);
 int						special_tok(char c);
 int						ending_special_char(char c);
 int						redir(t_inp *inp);

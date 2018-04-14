@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 16:36:59 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/14 20:17:22 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/14 22:06:47 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			empty_quote(int context, t_inp **inp)
 	return (0);
 }
 
-int			escaped(t_inp **inp)
+int			escaped(t_inp **inp, int context)
 {
 	t_inp	*cp;
 	int		odd;
@@ -40,10 +40,15 @@ int			escaped(t_inp **inp)
 	odd = 2;
 	if ((cp = (*inp)))
 	{
-		while (cp->previous && cp->previous->c == '\\')
+		if (cp->previous && cp->previous->c == '\\')
 		{
-			odd++;
-			cp = cp->previous;
+			if (cp->c == '\'' && context & QUOTE)
+				return (0);
+			while (cp->previous && cp->previous->c == '\\')
+			{
+				odd++;
+				cp = cp->previous;
+			}
 		}
 	}
 	return (odd % 2);
@@ -53,13 +58,14 @@ void		add_token(t_inpl **inpl, t_inp **cp, t_sh *sh)
 {
 	t_inp	*add;
 
+	sh->context = 0;
 	add = NULL;
 	while (*cp)
 	{
-		if (check_quoting(cp, sh->context) && !escaped(cp))
+		if (check_quoting(cp, sh->context) && !escaped(cp, sh->context))
 			sh->context = try_update_context((*cp)->c, sh->context);
 		if (*cp && right_context(sh->context) && ending_char((*cp)->c) &&
-				!escaped(cp))
+				!escaped(cp, sh->context))
 			break ;
 		if (!*cp)
 			break ;
