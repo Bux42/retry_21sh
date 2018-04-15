@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:06:27 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/11 12:14:08 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/15 21:53:23 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,26 @@ t_his		*history_new(t_inp *inp, t_sh *sh)
 	return (ret);
 }
 
+void		print_fd(t_inp **inp, t_inp **add)
+{
+	t_inp	*cp;
+
+	cp = *inp;
+	while (cp)
+	{
+		ft_putchar_fd(cp->c, g_sh->tty_fd);
+		cp = cp->next;
+	}
+	ft_putchar_fd('\n', g_sh->tty_fd);
+	cp = *add;
+	while (cp)
+	{
+		ft_putchar_fd(cp->c, g_sh->tty_fd);
+		cp = cp->next;
+	}
+	ft_putchar_fd('\n', g_sh->tty_fd);
+}
+
 void		history_push_front(t_his **history, t_inp *inp, t_sh *sh)
 {
 	t_his	*first;
@@ -53,12 +73,15 @@ void		history_push_front(t_his **history, t_inp *inp, t_sh *sh)
 		(*history) = history_new(inp, sh);
 	else
 	{
-		first = history_new(inp, sh);
 		while ((*history)->previous)
 			(*history) = (*history)->previous;
-		(*history)->previous = first;
-		first->next = (*history);
-		(*history) = first;
+		if (inp_to_inp_cmp(&inp, &(*history)->inp) == 0)
+		{
+			first = history_new(inp, sh);
+			(*history)->previous = first;
+			first->next = (*history);
+			(*history) = first;
+		}
 	}
 }
 
