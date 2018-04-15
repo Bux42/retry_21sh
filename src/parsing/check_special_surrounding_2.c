@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_special_surrounding_2.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/04/15 23:17:41 by videsvau          #+#    #+#             */
+/*   Updated: 2018/04/15 23:23:17 by videsvau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/header.h"
+
+int			check_file_redir(t_inpl *inpl)
+{
+	if (inpl->previous && inpl->next)
+	{
+		if (inpl->next->type & _FILE)
+		{
+			if (inpl->previous->type > 64 && inpl->previous->type < 2048)
+			{
+				if (!inpl->next->next)
+					return (0);
+				if (inpl->next->next && inpl->next->next->type != 128)
+					return (0);
+			}
+		}
+	}
+	return (1);
+}

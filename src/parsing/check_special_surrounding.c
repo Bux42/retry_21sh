@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 14:16:03 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/14 22:57:06 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/15 23:23:18 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,6 @@ int			bad_surrounding_4(t_inpl *inpl, int flag)
 	if (flag == 5 && inpl)
 		if (inpl->inp && inpl->inp->c == '-' && !inpl->inp->next)
 			return (0);
-	if (flag == 2 && inpl->previous && inpl->next)
-		if (inpl->next->type & _FILE)
-			if (inpl->previous->type > 64 && inpl->previous->type < 2048)
-				return (0);
 	if (flag == 1 && inpl->previous && inpl->next)
 		if ((inpl->previous->type > 64 && inpl->previous->type < 2048) ||
 				inpl->previous->type > 2048)
@@ -91,7 +87,7 @@ int			check_special_surrounding(t_inpl **inpl)
 				if (bad_surrounding_4(cp, 1))
 					return (special_error_surrounding(&cp->inp));
 			if (cp->type & TOFILE || cp->type & ATOFILE || cp->type & TOEXE)
-				if (bad_surrounding_4(cp, 2))
+				if (check_file_redir(cp))
 					return (special_error_surrounding(&cp->inp));
 			if (cp->type & HERE && bad_surrounding_3(cp))
 				return (special_error_surrounding(&cp->inp));

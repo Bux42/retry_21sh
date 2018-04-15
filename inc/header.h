@@ -6,14 +6,14 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/14 23:31:22 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/15 23:20:40 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 # define TERM "xterm-256color"
-# define DEBUG			0
+# define DEBUG			1
 # define TTY_MAX		10000
 
 # define DQUOTE			1
@@ -272,6 +272,7 @@ void					bquote_inp(t_inp **cp, t_sh *sh);
 int						redirection(t_inp **inp);
 
 int						check_special_surrounding(t_inpl **inpl);
+int						check_file_redir(t_inpl *inpl);
 t_redir					*return_last_redir(t_redir **redir);
 
 void					print_variable(t_inp **cp, t_sh *sh);
