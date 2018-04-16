@@ -91,6 +91,18 @@ int			find_hist_file(char *man_path)
 	return (fd);
 }
 
+void	check_fath(void)
+{
+	pid_t father;
+	
+	father = getppid();
+	if (father == 1)
+	{
+		ft_putendl_fd("Father killed by signal.", 2);
+		exit(1);
+	}
+}
+
 int			main(int ac, char **av, char **env)
 {
 	if (!(g_sh = (t_sh*)malloc(sizeof(t_sh))))
@@ -112,7 +124,10 @@ int			main(int ac, char **av, char **env)
 	init_variables(g_sh);
 	add_builtin_completion(g_sh);
 	while (ac > -1)
+	{
+		check_fath();
 		if (read(1, g_sh->buff, 4))
 			check_pasted(g_sh);
+	}
 	return (0);
 }
