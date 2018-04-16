@@ -70,14 +70,14 @@ t_pipe	*new_tabtube(int len)
 	return (ret);
 }
 
-void		dup_fd(t_listc *cmd, t_pipe *tabtube, int i)
+void	dup_fd(t_listc *cmd, t_pipe *tabtube, int i)
 {
 	if (fcntl(tabtube[i].cote[0], F_GETFD) == -1)
 	{
 		ft_putstr_fd("21sh: ", 2);
 		ft_putchar_fd(tabtube[i].cote[0] + '0', 2);
 		ft_putstr_fd(": Bad file descriptor", 2);
-		g_sh->i = 1;
+		g_sh->err = 1;
 	}
 	else if (cmd->redirs->redir[1] != 0 && cmd->redirs->redir[1] != 4
 		&& cmd->redirs->redir[0] == 1)
@@ -88,5 +88,5 @@ void		dup_fd(t_listc *cmd, t_pipe *tabtube, int i)
 		dup2(tabtube[i].cote[0], STDERR_FILENO);
 	else
 		dup2(tabtube[i].cote[0], tabtube[i].cote[1]);
-	g_sh->i = 0;
+	g_sh->err = 0;
 }

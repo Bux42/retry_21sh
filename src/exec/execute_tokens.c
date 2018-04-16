@@ -58,24 +58,6 @@ int		condition_is_valid(t_sh *sh, t_listc *cmd)
 	return (1);
 }
 
-void	count_heredoc(t_listc *cmd)
-{
-	t_redir *cp;
-	int i;
-
-	i = 0;
-	cp = cmd->redirs;
-	while (cmd->redirs)
-	{
-		if (cmd->redirs->redir[1] == HEREDOC)
-			i++;
-		cmd->redirs = cmd->redirs->next;
-	}
-	cmd->redirs = cp;
-	cmd->nb_here = i;
-	//printf("i = [%d]\n", i);
-}
-
 void	execute_tokens(t_listc **tok, t_sh *sh)
 {
 	t_listc	*cp;
@@ -85,6 +67,7 @@ void	execute_tokens(t_listc **tok, t_sh *sh)
 		return ;
 	while (cp)
 	{
+		sh->err = 0;
 		if (cp->func && cp->sep_type != PIPE && condition_is_valid(sh, cp))
 		{
 			func = cp->func;

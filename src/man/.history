@@ -86,3 +86,90 @@ cat << fin a << mdr
 clear
 ls
 exit
+cat << lol && ls && cat << mdr
+ls
+exit
+ls 
+ls 2>file
+ls -z 2>file
+cat file
+exit
+echo top>YB<RBU>Y<B?>R
+echo top>YB<RBU>Y<B?
+echo RBU
+echo top>YB<RBU
+echo top > RBU
+echo top>YB<RBU>
+echo top>YB<RBU
+echo top>YB<RBU>Y
+echo top>YB<RBU
+echo RBU
+echo top > RBU
+echo top>YB<RBU>Y<B?>R
+echo top>YB<RBU>Y<B?
+echo top>YB<RBU>Y<B>R
+echo top>YB<RBU>Y<B
+echo top>YB<RBU>Y
+echo top>YB<RBU>Y<B
+exit
+echo top>YB<RBU>Y<B
+echo top>YB<RBU>Y<B?>R
+ls
+rm R RBU Y YB
+ls
+echo top>YB<RBU>Y<B?>R
+ls
+rm R Y YB
+ls
+exit
+echo top>YB<RBU>Y<B?>R
+ls
+rm R Y YB
+ls
+exitr
+exit
+ls top>YB<RBU>Y<B?>R
+ls
+cat R Y YB
+rm R Y YB
+ls
+exit
+echo top>YB<RBU>Y<B?>R
+exit
+   printf("lol\n");
+echo top>YB<RBU>Y<B?>R
+exit
+echo top>YB<RBU>Y<B?>R
+ls -z || ls
+exit
+ls -z || ls
+exit
+ls -z || ls
+echo top>YB<RBU>Y<B?>R
+exit
+ls -z || ls
+ls && ls
+rm R Y YB
+ls
+echo top>YB<RBU>Y<B?>R
+ls
+rm YB
+exit
+ls && ls
+ls || ls
+ls -z || ls
+echo top>YB<RBU>Y<B?>R
+ls
+rm YB
+echo top>YB<RBU>Y<B?>R
+ls top>YB<RBU>Y<B?>R
+ls
+rm YB
+ls
+exit
+ls
+echo top>YB<RBU>Y<B?>R
+ls
+rm YB
+ls
+exit

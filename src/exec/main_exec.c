@@ -47,9 +47,7 @@ void	fork_exec(char *fullpath, t_listc *cmd, t_pipe *tabtube, t_sh *sh)
 		signal_exec();
 		env = env_list_to_char(&sh->env);
 		redirect(cmd, tabtube, 0, &cmd->redirs);
-		if (sh->i == 1)
-			exit(1);
-		run_cmd(fullpath, cmd, sh, env);
+		(sh->err == 1) ? exit(1) : run_cmd(fullpath, cmd, sh, env);
 	}
 	signal(SIGINT, SIG_IGN);
 	free(fullpath);

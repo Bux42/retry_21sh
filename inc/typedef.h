@@ -116,6 +116,7 @@ typedef struct			s_sh
 	int					command_lenght;
 	int					fd;
 	int					i;
+	int					err;
 	pid_t				pid;
 	int					posy;
 	int					diff;
