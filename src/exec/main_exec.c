@@ -47,6 +47,8 @@ void	fork_exec(char *fullpath, t_listc *cmd, t_pipe *tabtube, t_sh *sh)
 		signal_exec();
 		env = env_list_to_char(&sh->env);
 		redirect(cmd, tabtube, 0, &cmd->redirs);
+		if (sh->i == 1)
+			exit(1);
 		run_cmd(fullpath, cmd, sh, env);
 	}
 	signal(SIGINT, SIG_IGN);
@@ -66,8 +68,7 @@ void	exec_cli(char *cli, t_listc *cmd, t_sh *sh)
 
 	sh->pid = 0;
 	fullpath = NULL;
-	/*count_heredoc(cmd);*/
-	if (!(tabtube = new_tabtube(cmd->nb_arg /*+ cmd->nb_here*/)))
+	if (!(tabtube = new_tabtube(cmd->nb_arg)))
 		return ;
 	if (cmd->redirs && cmd->redirs->redir[1] == HEREDOC)
 		heredock_redirect(cmd, tabtube, 0);

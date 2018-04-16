@@ -42,22 +42,13 @@ void	heredock_redirect(t_listc *cmd, t_pipe *tabtube, int i)
 	cp = cmd->redirs;
 	if (pipe(tabtube[i].cote) == -1)
 		errexit("Pipe failed.");
-	/*while (cmd->redirs)
+	while (cmd->redirs->heredoc[j])
 	{
-		if (cmd->redirs->redir[1] == HEREDOC)
-		{*/
-			while (cmd->redirs->heredoc[j])
-			{
-				write(tabtube[i].cote[1], cmd->redirs->heredoc[j]
-					, ft_strlen(cmd->redirs->heredoc[j]));
-				j++;
-			}
-			close(tabtube[i].cote[1]);
-			//i++;
-		/*}
-		cmd->redirs = cmd->redirs->next;
+		write(tabtube[i].cote[1], cmd->redirs->heredoc[j]
+			, ft_strlen(cmd->redirs->heredoc[j]));
+		j++;
 	}
-	cmd->redirs = cp;*/
+	close(tabtube[i].cote[1]);
 }
 
 void	double_right_redirect(t_listc *cmd, t_pipe *tabtube, int i)

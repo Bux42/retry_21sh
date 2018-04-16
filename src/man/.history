@@ -79,3 +79,10 @@ exit
 cat << fin
 ls
 exit
+ls 2>&- 1>&2
+echo lol 2>&- 1>&2
+cat << fin << mdr
+cat << fin a << mdr
+clear
+ls
+exit
