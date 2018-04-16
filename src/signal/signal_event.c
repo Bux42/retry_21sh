@@ -6,17 +6,12 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 03:37:40 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/13 21:16:05 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/16 21:21:36 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/header.h"
-
-void		signal_newline(int inp)
-{
-	(void)inp;
-	custom_return();
-}
+#include "../builtin/builtin.h"
 
 void		free_closing(t_sh *sh, t_close **close)
 {
@@ -67,8 +62,17 @@ void		signal_print_prompt(int inp)
 
 void		signal_init(void)
 {
+	char	*tab[4];
+	if (g_sh->retval == 9)
+	{
+		tab[0] = "/usr/bin/killall";
+		tab[1] = "-1";
+		tab[2] = "21sh";
+		tab[3] = NULL;
+		execve(tab[0], tab, NULL);
+	}
 	signal(SIGINT, &signal_print_prompt);
-	signal(SIGHUP, SIG_IGN);
+	signal(SIGHUP, &suicide_squad);
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGILL, SIG_IGN);
 	signal(SIGTRAP, SIG_IGN);

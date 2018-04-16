@@ -6,7 +6,7 @@
 #    By: jamerlin <jamerlin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/12 02:03:18 by videsvau          #+#    #+#              #
-#    Updated: 2018/04/15 23:18:39 by videsvau         ###   ########.fr        #
+#    Updated: 2018/04/16 21:19:31 by videsvau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,7 @@ exec/aggregations.c\
 builtin/check_builtin.c\
 builtin/change_dir.c\
 signal/signal_event.c\
+signal/suicide_squad.c\
 launch_term/init_term.c\
 env/env_list.c\
 env/get_env.c\

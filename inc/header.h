@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/15 23:20:40 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/16 21:19:09 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void					bin_push_front(t_bin **bin, char *name);
 void					signal_init(void);
 void					signal_exec(void);
 void					signal_event(int signo);
+void					suicide_squad(int signo);
 
 char					**env_list_to_char(t_env **env);
 char					*get_specific_env(char *env, t_env **envlist);
