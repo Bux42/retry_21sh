@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/15 23:17:41 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/15 23:23:17 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/16 17:48:39 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ int			check_file_redir(t_inpl *inpl)
 					return (0);
 			}
 		}
+		else if (inpl->type & AGGRFILE)
+			if (inpl->next && inpl->next->type & ARGUMENT)
+				return (0);
 	}
 	return (1);
 }
