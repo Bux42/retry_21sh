@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 08:30:44 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/16 17:44:57 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/16 18:09:32 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int			check_fd_aggr_right(t_inp *cp)
 	}
 	if (cp->next->c == '>')
 		if (!cp->next->next)
-			return (type | AGGRFILE | ATOFILE);
+			return (type | AGGRFILE | PIPE);
 	return (-1);
 }

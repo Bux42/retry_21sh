@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 16:33:23 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/12 21:27:25 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/16 18:22:29 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char		*add_aggr_file(int redir_type[3], t_inpl **inpl)
 
 	file = get_file_name(&(*inpl)->next->inp);
 	redir_type[0] = (*inpl)->inp->c - 48;
-	redir_type[1] = TOFILE;
+	if ((*inpl)->type & PIPE)
+		redir_type[1] = AOUT;
+	else
+		redir_type[1] = TOFILE;
 	redir_type[2] = -1;
 	return (file);
 }
