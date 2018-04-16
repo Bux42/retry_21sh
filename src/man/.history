@@ -173,3 +173,16 @@ ls
 rm YB
 ls
 exit
+echo top>YB<RBU>Y<B?>R
+ls
+rm R Y YB
+ls
+exit
+echo top>YB<RBU>Y<B?>R
+ls
+rm YB
+ls top>YB<RBU>Y<B?>R
+ls
+rm YB
+ls
+exit

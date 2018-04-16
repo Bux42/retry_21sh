@@ -79,10 +79,9 @@ void	redirect(t_listc *cmd, t_pipe *tabtube, int i, t_redir **redir)
 			dup_fd(cmd, tabtube, i);
 		if (!(cmd->redirs->redir[1] & AGGR))
 			close(tabtube[i].cote[0]);
-		if (cmd->redirs->next)
-			cmd->redirs = cmd->redirs->next;
-		else
+		if (!cmd->redirs->next)
 			break ;
+		cmd->redirs = cmd->redirs->next;
 	}
 	cmd->redirs = cp;
 	i++;
