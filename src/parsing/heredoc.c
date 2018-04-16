@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/23 08:53:51 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/08 11:29:03 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/16 17:27:55 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char		*get_ending_here(t_inp **inp)
 		{
 			if (cp->c > 31)
 				ret[len] = cp->c;
+			else
+				ret[len] = ' ';
 			len++;
 			cp = cp->next;
 		}
