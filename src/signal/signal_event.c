@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 03:37:40 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/16 21:21:36 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 19:47:32 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		signal_print_prompt(int inp)
 void		signal_init(void)
 {
 	char	*tab[4];
+
 	if (g_sh->retval == 9)
 	{
 		tab[0] = "/usr/bin/killall";

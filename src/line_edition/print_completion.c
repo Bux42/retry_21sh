@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 02:01:15 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/14 23:46:18 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 20:06:26 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,6 @@ int			get_diff(char *fl, t_sh *sh)
 	return (0);
 }
 
-int			escape_char(char c)
-{
-	if (c == ' ')
-		return (1);
-	if (c == '!' || c == '?')
-		return (1);
-	if (c == '$')
-		return (1);
-	if (c == '^' || c == '=')
-		return (1);
-	if (c == '&' || c == '\\')
-		return (1);
-	if (c == '*' || c == ';')
-		return (1);
-	if (c == '(' || c == ')' || c == '{' || c == '}')
-		return (1);
-	if (c == '\'' || c == '\"' || c == '`')
-		return (1);
-	if (c == '[' || c == ']')
-		return (1);
-	if (c == '<' || c == '>')
-		return (1);
-	return (0);
-}
-
 void		found(t_sh *sh, DIR *od, struct dirent *fl, t_inp *cp)
 {
 	int		escape;
@@ -87,26 +62,10 @@ void		found(t_sh *sh, DIR *od, struct dirent *fl, t_inp *cp)
 	write(1, "\e[2m", 5);
 	free_comp(1, sh);
 	sh->comp_remain = ft_strdup(&fl->d_name[ft_strlen(sh->comp_debug)]);
-	while (sh->comp_remain[++sh->dec])
-	{
-		if (escape_char(sh->comp_remain[sh->dec]))
-		{
-			ft_putchar('\\');
-			check_endline(sh);
-			escape++;
-		}
-		ft_putchar(sh->comp_remain[sh->dec]);
-		check_endline(sh);
-	}
+	preview_autocompletion(sh, cp, 0);
 	write(1, "\x1b[0m", 5);
 	sh->dec += escape;
-	while (cp)
-	{
-		sh->dec++;
-		ft_putchar(cp->c);
-		check_endline(sh);
-		cp = cp->next;
-	}
+	preview_autocompletion(sh, cp, 1);
 	print_spaces(sh->over, sh);
 	sh->dec += sh->over;
 	while (sh->dec--)

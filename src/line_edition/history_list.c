@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:06:27 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/15 21:53:23 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 20:07:36 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,6 @@ t_his		*history_new(t_inp *inp, t_sh *sh)
 	ret->previous = NULL;
 	ret->inp = cp;
 	return (ret);
-}
-
-void		print_fd(t_inp **inp, t_inp **add)
-{
-	t_inp	*cp;
-
-	cp = *inp;
-	while (cp)
-	{
-		ft_putchar_fd(cp->c, g_sh->tty_fd);
-		cp = cp->next;
-	}
-	ft_putchar_fd('\n', g_sh->tty_fd);
-	cp = *add;
-	while (cp)
-	{
-		ft_putchar_fd(cp->c, g_sh->tty_fd);
-		cp = cp->next;
-	}
-	ft_putchar_fd('\n', g_sh->tty_fd);
 }
 
 void		history_push_front(t_his **history, t_inp *inp, t_sh *sh)

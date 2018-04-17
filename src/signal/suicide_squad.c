@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 21:17:59 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/16 21:18:14 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 19:47:09 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ void		suicide_squad(int signo)
 	tab[2] = NULL;
 	builtin_exit(tab, g_sh);
 }
-

@@ -12,6 +12,31 @@
 
 #include "../../inc/header.h"
 
+int			escape_char(char c)
+{
+	if (c == ' ')
+		return (1);
+	if (c == '!' || c == '?')
+		return (1);
+	if (c == '$')
+		return (1);
+	if (c == '^' || c == '=')
+		return (1);
+	if (c == '&' || c == '\\')
+		return (1);
+	if (c == '*' || c == ';')
+		return (1);
+	if (c == '(' || c == ')' || c == '{' || c == '}')
+		return (1);
+	if (c == '\'' || c == '\"' || c == '`')
+		return (1);
+	if (c == '[' || c == ']')
+		return (1);
+	if (c == '<' || c == '>')
+		return (1);
+	return (0);
+}
+
 int			left_word_len(int *slash, t_inp **cp)
 {
 	int		i;

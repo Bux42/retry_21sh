@@ -6,11 +6,37 @@
 /*   By: drecours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/09 14:56:37 by drecours          #+#    #+#             */
-/*   Updated: 2018/04/14 23:44:14 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 20:05:13 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/header.h"
+
+int			preview_autocompletion(t_sh *sh, t_inp *cp, int which)
+{
+	int		escape;
+
+	escape = 0;
+	while (which && cp)
+	{
+		sh->dec++;
+		ft_putchar(cp->c);
+		check_endline(sh);
+		cp = cp->next;
+	}
+	while (!which && sh->comp_remain[++sh->dec])
+	{
+		if (escape_char(sh->comp_remain[sh->dec]))
+		{
+			ft_putchar('\\');
+			check_endline(sh);
+			escape++;
+		}
+		ft_putchar(sh->comp_remain[sh->dec]);
+		check_endline(sh);
+	}
+	return (escape);
+}
 
 void		add_builtin_completion(t_sh *sh)
 {

@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/16 21:19:09 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 20:05:12 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ int						check_empty_line(t_inp **inp);
 
 void					autocompletion(t_inp **inp, t_sh *sh);
 void					print_completion(t_sh *sh, t_inp **inp);
+int						preview_autocompletion(t_sh *sh, t_inp *cp, int which);
 void					not_found(t_sh *sh, t_inp *inp);
 int						get_diff(char *fl, t_sh *sh);
 void					print_completion_builtin(t_sh *s, t_inp *i, t_bin **b);
