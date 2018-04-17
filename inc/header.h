@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/17 20:05:12 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 21:13:39 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,6 +322,8 @@ int						init_pipe(t_listc *cmd, t_pipe *t, t_sh *i_env);
 
 void					heredock_redirect(t_listc *cmd, t_pipe *t, int i);
 void					redirect(t_listc *cmd, t_pipe *t, int i, t_redir **r);
+void					reset_fd(int save_fd[3]);
+void					sve_fd(int save_fd[3]);
 void					do_aggre(t_listc *cmd, t_pipe *t, int i);
 
 void					errexit(char *str);

@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:30:00 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/13 21:15:27 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 20:55:24 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct			s_sh
 	int					command_lenght;
 	int					fd;
 	int					i;
+	int					aggr_fail;
 	int					err;
 	pid_t				pid;
 	int					posy;

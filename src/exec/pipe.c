@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:31:13 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/11 17:31:14 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 21:29:02 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,12 @@ void	pipe_tmp(t_listc *cmd, int i, t_pipe *tabtube, t_sh *sh)
 	}
 	if (cmd->redirs && cmd->redirs->redir[1] == 4)
 		heredock_redirect(cmd, tabtube, i);
+	sh->aggr_fail = 1;
 	redirect(cmd, tabtube, i, &cmd->redirs);
-	ft_cmd_pipe(cmd, sh);
+	if (sh->aggr_fail)
+		ft_cmd_pipe(cmd, sh);
+	else
+		exit(1);
 }
 
 void	ft_pipe(t_listc *cmd, int *pid_tab, t_pipe *tabtube, t_sh *sh)

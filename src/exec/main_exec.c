@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:31:04 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/11 17:31:05 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/17 21:27:37 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,12 @@ void	fork_exec(char *fullpath, t_listc *cmd, t_pipe *tabtube, t_sh *sh)
 	{
 		signal_exec();
 		env = env_list_to_char(&sh->env);
+		sh->aggr_fail = 1;
 		redirect(cmd, tabtube, 0, &cmd->redirs);
-		(sh->err == 1) ? exit(1) : run_cmd(fullpath, cmd, sh, env);
+		if (sh->aggr_fail)
+			(sh->err == 1) ? exit(1) : run_cmd(fullpath, cmd, sh, env);
+		else
+			exit(1);
 	}
 	signal(SIGINT, SIG_IGN);
 	free(fullpath);
