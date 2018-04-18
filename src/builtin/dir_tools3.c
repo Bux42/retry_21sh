@@ -6,7 +6,7 @@
 /*   By: drecours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 15:08:52 by drecours          #+#    #+#             */
-/*   Updated: 2018/04/07 04:34:30 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/18 15:05:06 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int			parse_flags(char **exec, int *index)
 				return (-1);
 		j = 0;
 	}
-	if (!exec[i])
+	if (!exec[i] && (*index = i - 1))
 		return (flag);
 	*index = (ft_strcmp(exec[i], "--") == 0) ? i + 1 : i;
 	if (ft_strcmp(exec[i], "--") == 0 && exec[i + 1] && exec[i + 2])

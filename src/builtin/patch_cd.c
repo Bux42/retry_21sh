@@ -6,12 +6,23 @@
 /*   By: drecours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 21:38:57 by drecours          #+#    #+#             */
-/*   Updated: 2018/04/12 21:40:52 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/18 14:59:44 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/header.h"
 #include "builtin.h"
+
+int			no_argument(char **exec, int index)
+{
+	if (!exec[index])
+		return (1);
+	else if (ft_strcmp(exec[index], "-L") == 0 && !exec[index + 1])
+		return (1);
+	else if (ft_strcmp(exec[index], "-P") == 0 && !exec[index + 1])
+		return (1);
+	return (0);
+}
 
 int			change_pwd(int flag, t_env **env, char *path, int err)
 {

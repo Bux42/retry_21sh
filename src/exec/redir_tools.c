@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:31:37 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/11 17:31:37 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/18 14:44:10 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,7 @@ t_pipe	*new_tabtube(int len)
 void	dup_fd(t_listc *cmd, t_pipe *tabtube, int i)
 {
 	if (fcntl(tabtube[i].cote[0], F_GETFD) == -1)
-	{
-		ft_putstr_fd("21sh: ", 2);
-		ft_putchar_fd(tabtube[i].cote[0] + '0', 2);
-		ft_putstr_fd(": Bad file descriptor", 2);
 		g_sh->err = 1;
-	}
 	else if (cmd->redirs->redir[1] != 0 && cmd->redirs->redir[1] != 4
 		&& cmd->redirs->redir[0] == 1)
 		dup2(tabtube[i].cote[0], STDOUT_FILENO);

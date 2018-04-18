@@ -6,7 +6,7 @@
 /*   By: drecours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:01:36 by drecours          #+#    #+#             */
-/*   Updated: 2018/04/12 21:38:29 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/18 14:59:46 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		valid_name(char *str, char *builtin);
 /*
 ** CD TOOLS
 */
+int		no_argument(char **exec, int index);
 int		resolve_relative_path(t_env **env, char *bin_path);
 size_t	path_trim(char *path, size_t size);
 size_t	path_subcpy(const char *source, char *dest, size_t start, size_t len);

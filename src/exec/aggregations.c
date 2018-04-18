@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 17:30:33 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/17 21:20:14 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/18 14:43:55 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	check_fd(t_sh *sh, int fd)
 		ft_putnbr_fd(fd, 2);
 		ft_putendl_fd(": bad file descriptor", 2);
 		sh->aggr_fail = 0;
+		sh->retval = 1;
 	}
 }
 

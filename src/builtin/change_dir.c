@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 06:48:58 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/15 22:49:29 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/18 15:01:09 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int			builtin_cd(char **exec, t_sh *sh)
 	ret = 0;
 	if ((flag = parse_flags(exec, &index)) == -1)
 		return (1);
-	if (!exec[index])
+	if (no_argument(exec, index))
 	{
 		if ((home = get_specific_env("HOME=", &sh->env)))
 		{
