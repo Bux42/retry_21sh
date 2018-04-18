@@ -6,7 +6,7 @@
 /*   By: drecours <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 13:50:02 by drecours          #+#    #+#             */
-/*   Updated: 2018/03/22 10:16:02 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/18 17:21:02 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,6 @@ size_t		path_trim(char *path, size_t size)
 	path_subcpy(trimmed_str, path, 0, len < size ? len : size);
 	free(trimmed_str);
 	return (len);
-}
-
-char		*find_man_path(char *relative)
-{
-	char	buff[2048];
-	char	*path;
-	char	*tmp;
-	int		i;
-
-	getcwd(buff, 2048);
-	path = ft_strjoin(getcwd(buff, 2048), "/");
-	tmp = ft_strjoin(path, relative);
-	free(path);
-	path_eval(tmp);
-	path = ft_strjoin(tmp, "man/");
-	free(tmp);
-	i = ft_strlen(path);
-	path[i - 5] = '/';
-	path[i - 6] = 'c';
-	path[i - 7] = 'r';
-	path[i - 8] = 's';
-	return (path);
 }
 
 int			ft_isnum(char c)

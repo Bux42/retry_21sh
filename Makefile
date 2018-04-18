@@ -6,7 +6,7 @@
 #    By: jamerlin <jamerlin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/12 02:03:18 by videsvau          #+#    #+#              #
-#    Updated: 2018/04/16 21:19:31 by videsvau         ###   ########.fr        #
+#    Updated: 2018/04/18 17:24:47 by videsvau         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,6 +103,7 @@ env/env_list.c\
 env/get_env.c\
 pwd/print_prompt.c\
 builtin/builtin_history.c\
+builtin/find_man_path.c\
 builtin/builtin_echo.c\
 builtin/builtin_exit.c\
 builtin/builtin_unsetenv.c\

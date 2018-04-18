@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 05:14:26 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/18 14:33:50 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/18 16:30:34 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ int			main(int ac, char **av, char **env)
 		return (0);
 	if (!(g_sh->inpl = (t_inpl*)malloc(sizeof(t_inpl))))
 		return (0);
-	g_sh->man_path = find_man_path(av[0]);
+	if (!(g_sh->man_path = find_man_path(av[0])))
+		return (0);
 	if ((g_sh->fd = find_hist_file(g_sh->man_path)) == -1)
 		return (0);
 	get_env(env, g_sh);
