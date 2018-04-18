@@ -55,6 +55,16 @@ char		*get_specific_loc(char *env, t_loc **envlist)
 	return (NULL);
 }
 
+void		set_pwd_env(t_sh *sh)
+{
+	char *pwd;
+
+	pwd = NULL;
+	pwd = getcwd(pwd, 2048);
+	set_env(&sh->env, "PWD=", pwd);
+	free(pwd);
+}
+
 void		get_env(char **env, t_sh *sh)
 {
 	int		i;
@@ -79,4 +89,5 @@ void		get_env(char **env, t_sh *sh)
 	}
 	else
 		env_push_back(&sh->env, "SHLVL=1");
+	set_pwd_env(sh);
 }

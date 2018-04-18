@@ -245,3 +245,158 @@ ls
 exit
 ./21sh
 exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exit
+cd .
+exi
+exit
+cd .
+ls
+cd ~
+ls
+cd .
+cd ..
+ls
+pwd
+/bin/ls
+exit
+ls
+cd .
+cd ..
+ls
+exit
+/bin/ls
+cd ..
+ls
+/bin/ls
+cd ..
+/bin/ls
+exit
+cd ..
+ls
+/bin/ls
+cd ..
+ls
+exit
+cd ..
+ls
+exit
+cd .
+/bin/ls
+cd ..
+/bin/ls
+cd /
+ls
+/bin/ls
+cd -
+exit
+/bin/pwd
+cd ..
+/bin/pwd
+/bin/ls
+cd /
+/bin/ls
+/bin/pwd
+/bin/ls
+cd -
+/bin/pwd
+exit
+/bin/pwd
+cd ..
+/bin/pwd
+cd ..
+cd ~
+cd /home
+ls
+exit
+env
+exit
+env
+exit
+ls
+/bin/ls
+cd ..
+ls
+/bin/ls
+cd -
+/bin/ls
+cd Users/
+ls
+exit
+pwd
+/bin/pwd
+cd ..
+/bin/pwd
+cd -
+/bin/pwd
+cd ~
+ls
+cd Users/
+cd jamerlin/
+cd 21sh/
+cd ..
+exit
+cd ..
+exit
+env
+exit
+cd ..
+ls
+cd -
+cd /lol
+cd lol
+exit
+cd ..
+exit
+exut
+exit
+cd ..
+exit
+cd ~
+cd -
+cd ..
+cd -
+cd /home
+cd ~
+cd -L
+cd -l
+cd -P
+exit
+cd .
+cd ..
+cd ~
+cd -
+cd ..
+cd -
+cd /Users/jamerlin/21sh/
+ls
+/bin/ls
+exit
+cd ..
+cd .
+ls
+exit
+cd .
+cd ..
+/bin/pwd
+exit
