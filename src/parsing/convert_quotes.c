@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 17:25:37 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/14 20:37:25 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/18 19:10:26 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void		convert_backslash_quote(t_inp **inp)
 	c = '\0';
 	if ((*inp)->next)
 	{
-		if ((*inp)->next->c == '\n')
+		if ((*inp)->next->c == 'n')
 			c = '\n';
-		if ((*inp)->next->c == '\t')
+		if ((*inp)->next->c == 't')
 			c = '\t';
 		if (c)
 		{
