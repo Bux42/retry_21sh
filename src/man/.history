@@ -1259,3 +1259,7 @@ cd -P /var
 cd -P -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L -L /var
 21sh
 make fclean
+history -c
+cat src/man/.history
+ls
+history -I "coin coin"

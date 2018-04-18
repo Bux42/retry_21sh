@@ -7,7 +7,8 @@ NAME
 
 
 SYNOPSIS
-       history [-n] [-C | [-]NUMBER [LG] | -A] -- print history
+       history [-n] [[-C | -c] | [-]NUMBER [LG] 
+	           | [-A] | [-I [args ...]]] -- print history
 
 
 DESCRIPTION
@@ -18,7 +19,14 @@ DESCRIPTION
 OPTIONS
        -C
 
-       All commands of the history are erased.
+       All commands of the history are erased (on the file too).
+
+       -c
+
+       All commands of the history are erased but the file doesn't change.
+	   -I
+
+	   Add commands in history
 
        -n
 
@@ -54,6 +62,10 @@ EXAMPLE
        To show the penultimate command of the history with its number:
 
        $history -n -2 1
+
+	   To add "cd .." and "echo norme" in the history list:
+
+	   $history -I "cd .." "echo norme"
 
 
 
