@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:27:32 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:27:34 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/19 20:57:38 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char		*get_ending_here(t_inp **inp)
 			len++;
 			cp = cp->next;
 		}
+		ret[len] = '\0';
 	}
 	return (ret);
 }
