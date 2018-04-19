@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:17:37 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:17:37 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/19 19:04:51 by jamerlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,27 @@ char		*find_command_path(char **path, char *command)
 
 char		*check_path_bin(char *path, t_sh *sh)
 {
-	if (access(path, X_OK) != -1)
+	struct stat		data;
+
+	if (access(path, F_OK) != 0)
+		print_err(1, path);
+	else if (access(path, X_OK) != 0)
+		print_err(2, path);
+	else if (stat(path, &data) == -1)
+		print_err(3, path);
+	else if (!(S_ISREG(data.st_mode)))
+		print_err(4, path);
+	else
 		return (ft_strdup(path));
-	ft_putstr_fd("21sh: Permission denied: ", 2);
-	ft_putendl_fd(path, 2);
 	sh->retval = 127;
 	return (NULL);
 }
 
 char		*command_path(t_env **env, char *command, t_sh *sh)
 {
-	char	*path;
-	char	*ret;
-	char	**split;
+	char			*path;
+	char			*ret;
+	char			**split;
 
 	ret = NULL;
 	if (command[0] == '/' || command[0] == '.')
@@ -88,8 +96,7 @@ char		*command_path(t_env **env, char *command, t_sh *sh)
 	}
 	if (!ret)
 	{
-		ft_putstr_fd("21sh: command not found: ", 2);
-		ft_putendl_fd(command, 2);
+		print_err(2, command);
 		sh->retval = 127;
 	}
 	return (ret);
@@ -97,7 +104,7 @@ char		*command_path(t_env **env, char *command, t_sh *sh)
 
 void		free_char_array(char **array)
 {
-	int		i;
+	int				i;
 
 	i = -1;
 	if (array)
