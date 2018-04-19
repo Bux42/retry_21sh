@@ -6,17 +6,15 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:12:30 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:12:31 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/19 20:45:17 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/header.h"
 #include "builtin.h"
 
-int		show_err(int err, char c, char *fg)
+int		show_err(int err, char c)
 {
-	if (fg)
-		free(fg);
 	if (err == 1)
 		ft_putendl_fd("history: Too many arguments.", STDERR_FILENO);
 	if (err == 2)
@@ -61,14 +59,14 @@ int		built_err(char **exec, char *fg)
 		if (ft_strcmp("--", exec[i]) == 0)
 		{
 			if (exec[i + 1] && exec[i + 2] && exec[i + 3])
-				return (show_err(1, 'c', fg));
+				return (show_err(1, 'c'));
 			return (0);
 		}
 		if (exec[i][0] == '-')
 		{
 			while (exec[i][++j])
 				if (ft_strchr(flag, exec[i][j]) == NULL || put(exec[i][j], fg))
-					return (show_err(2, exec[i][j], fg));
+					return (show_err(2, exec[i][j]));
 			j = 0;
 		}
 		else
@@ -108,15 +106,15 @@ int		builtin_history(char **exec, t_sh *sh)
 {
 	int		err;
 	int		i;
-	char	*fg;
+	char	fg[5];
 	int		lg;
 
-	fg = ft_strdup("00000");
+	ft_bzero(fg, 5);
 	lg = -1;
 	if (too_big(exec) || (err = built_err(exec, fg)) > 0)
-		return (erase_fg(fg, 3));
+		return (erase_fg(3));
 	if ((fg[0] == 'A' || fg[4] == 'I') && (fg[1] == 'C' || fg[3] == 'c'))
-		return (erase_fg(fg, 4));
+		return (erase_fg(4));
 	if (fg[4] == 'I')
 		err = insert_args(fg, sh, exec);
 	else if (fg[1] == 'C' || fg[3] == 'c')
@@ -128,5 +126,5 @@ int		builtin_history(char **exec, t_sh *sh)
 		i = (i > 0) ? i + 1 : i;
 		err = builtin_hist(i, &sh->history, lg, fg);
 	}
-	return (erase_fg(fg, err));
+	return (erase_fg(err));
 }

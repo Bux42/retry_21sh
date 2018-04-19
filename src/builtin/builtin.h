@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:11:31 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:11:32 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/19 20:44:41 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		check_arg(char **exec, int i);
 void	show_line(char c, int nb, t_inp *cp);
 t_env	*tab_in_env(char **tab);
 void	show_args(char **exec);
-int		erase_fg(char *fg, int i);
+int		erase_fg(int i);
 void	free_list(t_env **env);
 int		flag_v(char **exec);
 int		valid_name(char *str, char *builtin);
@@ -87,7 +87,7 @@ int		valid_by_last(t_inp **inp);
 void	hist_verbose(int i);
 int		change_fd(t_sh *sh, char *path, char c);
 int		history_clean(char *fg, t_his **hist, t_sh *sh);
-int		show_err(int err, char c, char *fg);
+int		show_err(int err, char c);
 int		get_lg(int *lg, char **exec);
 int		get_beg(int *i, t_his **history, char **exec);
 int		last_command(t_sh *sh, t_inp **t);

@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:14:27 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:14:28 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/19 20:45:36 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,9 @@ int					change_fd(t_sh *sh, char *path, char c)
 	return (0);
 }
 
-int					erase_fg(char *fg, int i)
+int					erase_fg(int i)
 {
-	free(fg);
 	if (i == 4)
-		return (show_err(4, '0', NULL));
+		return (show_err(4, '0'));
 	return (i);
 }
