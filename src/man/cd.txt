@@ -39,7 +39,7 @@ EXAMPLE
 
 
 AUTHOR
-       Deborah Recourse and Virgile Desvaux
+       Jayson Merlini and Victor Boivin
 
 
 

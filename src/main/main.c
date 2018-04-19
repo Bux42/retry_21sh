@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/11 05:14:26 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/18 16:30:34 by videsvau         ###   ########.fr       */
+/*   Created: 2018/04/19 15:23:37 by jamerlin          #+#    #+#             */
+/*   Updated: 2018/04/19 17:25:49 by jamerlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		check_pasted(t_sh *sh)
 {
-	int		i;
-	char	buff[6];
+	int			i;
+	char		buff[6];
 
 	i = -1;
 	if (sh->buff[0] == 27 || sh->buff[1] == '\0')
@@ -70,15 +70,16 @@ void		init_variables(t_sh *sh)
 
 int			find_hist_file(char *man_path)
 {
-	int		fd;
-	char	*cp;
+	int			fd;
+	char		*cp;
+	struct stat sb;
 
 	g_sh->ctrl_c = 1;
-	if (fcntl(0, F_GETFD) == -1)
+	if (fstat(0, &sb) == -1)
 		return (-1);
-	if (fcntl(1, F_GETFD) == -1)
+	if (fstat(1, &sb) == -1)
 		return (-1);
-	if (fcntl(2, F_GETFD) == -1)
+	if (fstat(2, &sb) == -1)
 		return (-1);
 	fd = -1;
 	if (!(cp = (char*)malloc(sizeof(char) * (ft_strlen(man_path) + 9))))

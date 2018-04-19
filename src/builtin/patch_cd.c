@@ -36,9 +36,7 @@ int			change_pwd(int flag, t_env **env, char *path, int err)
 		free(oldpwd);
 		return (err_msg("cd: no such file or directory: ", getpwd, -1));
 	}
-	if (flag & 1)
-		set_env(env, "OLDPWD=", getcwd(getpwd, 2048));
-	else
+	if (oldpwd)
 		set_env(env, "OLDPWD=", oldpwd);
 	ret = chdir(path);
 	if (flag & 1)

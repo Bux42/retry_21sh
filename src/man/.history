@@ -1263,3 +1263,88 @@ history -c
 cat src/man/.history
 ls
 history -I "coin coin"
+ls
+echo '\n'
+exit
+echo '\n'
+echo "'\n'"
+exit
+echo -n '\n'
+exit
+ls
+echo '\n'
+echo '\n' '\n'
+exit
+ls 1>&6
+exit
+ls 1>&6
+exit
+ls
+ls 1>&6
+ls 6>file 1>&6
+cat file
+rm file
+ls
+exit
+ls 1>&6
+exit
+ls 1>&6
+exit
+ls 1>&-
+ls 1>&6
+exit
+cd
+cd -L
+cd /
+cd -l
+CD -p
+cd -P
+exit
+cd
+cd ~
+cd -
+ls
+cd 21sh/
+cd -
+ls
+cd 21sh
+ls
+cd auteur
+ls
+cd ..
+ls
+cd 21sh/
+cd ~/dsaf*-
+ls
+unsetenv PWD
+ls
+cd -
+cd ~
+lcd -
+cd 
+ls
+cd 21sh/
+env
+unsetenv PWD
+unsetenv OLDPWD
+env
+cd 
+cd -
+cd ~
+cd -
+cd ..
+cd .././../.././.././.././././../
+ls
+cd -
+cd ../../..
+cd ~
+cd ~/../../ /
+cd ~/../../
+exit
+eixit
+exitf
+exit
+fghiorw;ghjb;regv.fhbfh'rgvJN:fsBJO{'
+exit
+ls
+exit

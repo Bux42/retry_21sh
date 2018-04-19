@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   suicide_squad.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/16 21:17:59 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/18 14:48:08 by videsvau         ###   ########.fr       */
+/*   Created: 2018/04/19 15:30:25 by jamerlin          #+#    #+#             */
+/*   Updated: 2018/04/19 15:30:26 by jamerlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void		suicide_squad(int signo)
 {
 	char	*tab[3];
 
-	ft_putstr("Suicide Pid: ");
-	ft_putnbr(getpid());
+	ft_putstr("Suicide son.");
 	custom_return();
 	signo++;
 	tab[0] = "exit";

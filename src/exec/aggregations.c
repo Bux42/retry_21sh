@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aggregations.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/11 17:30:33 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/18 14:43:55 by videsvau         ###   ########.fr       */
+/*   Created: 2018/04/19 15:17:22 by jamerlin          #+#    #+#             */
+/*   Updated: 2018/04/19 15:17:23 by jamerlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	check_fd(t_sh *sh, int fd)
 {
-	int		save_fd[3];
+	int			save_fd[3];
+	struct stat stats;
 
-	if (fd != -1 && fcntl(fd, F_GETFD) == -1)
+	if (fd != -1 && fstat(fd, &stats) == -1)
 	{
 		sve_fd(save_fd);
 		reset_fd(save_fd);

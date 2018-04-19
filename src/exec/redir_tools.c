@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/11 17:31:37 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/18 14:44:10 by videsvau         ###   ########.fr       */
+/*   Created: 2018/04/19 15:21:25 by jamerlin          #+#    #+#             */
+/*   Updated: 2018/04/19 17:28:13 by jamerlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	prepare_pipe(t_listc *cmd)
 {
-	t_listc	*cpy;
-	int		nb_cmd;
-	int		i;
+	t_listc		*cpy;
+	int			nb_cmd;
+	int			i;
 
 	cpy = cmd;
 	nb_cmd = 0;
@@ -39,7 +39,7 @@ void	prepare_pipe(t_listc *cmd)
 
 void	closed_unused_fd(int fils, int nb_tube, t_pipe *tabtube)
 {
-	int i;
+	int			i;
 
 	i = 0;
 	while (i < nb_tube)
@@ -54,8 +54,8 @@ void	closed_unused_fd(int fils, int nb_tube, t_pipe *tabtube)
 
 t_pipe	*new_tabtube(int len)
 {
-	t_pipe	*ret;
-	int		i;
+	t_pipe		*ret;
+	int			i;
 
 	ret = NULL;
 	i = 0;
@@ -72,7 +72,9 @@ t_pipe	*new_tabtube(int len)
 
 void	dup_fd(t_listc *cmd, t_pipe *tabtube, int i)
 {
-	if (fcntl(tabtube[i].cote[0], F_GETFD) == -1)
+	struct stat	stats;
+
+	if (fstat(tabtube[i].cote[0], &stats) == -1)
 		g_sh->err = 1;
 	else if (cmd->redirs->redir[1] != 0 && cmd->redirs->redir[1] != 4
 		&& cmd->redirs->redir[0] == 1)

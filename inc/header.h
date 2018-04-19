@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/11 17:29:48 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/18 14:12:51 by videsvau         ###   ########.fr       */
+/*   Created: 2018/04/19 15:08:15 by jamerlin          #+#    #+#             */
+/*   Updated: 2018/04/19 15:55:01 by jamerlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <sys/syslimits.h>
+# include <sys/ioctl.h>
 
 # include "typedef.h"
 # include "hash.h"
