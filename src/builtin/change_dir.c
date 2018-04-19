@@ -6,7 +6,7 @@
 /*   By: videsvau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 06:48:58 by videsvau          #+#    #+#             */
-/*   Updated: 2018/04/18 15:01:09 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/19 18:41:35 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int			builtin_cd(char **exec, t_sh *sh)
 
 	index = 1;
 	ret = 0;
-	if ((flag = parse_flags(exec, &index)) == -1)
+	if (exec[1] && (flag = parse_flags(exec, &index)) == -1)
 		return (1);
 	if (no_argument(exec, index))
 	{
