@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:34:00 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:34:01 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/19 20:08:02 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		delete_remain(t_sh *sh, char *remain)
 	int		len2;
 	t_inp	*cp;
 
-	len2 = 0;
+	len2 = 1;
 	cp = get_to_pos(&sh->inpl->inp);
 	while (cp)
 	{
