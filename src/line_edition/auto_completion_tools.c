@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:31:22 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 21:08:38 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/20 19:15:37 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int			preview_autocompletion(t_sh *sh, t_inp *cp, int which)
 		if (escape_char(sh->comp_remain[sh->dec]))
 		{
 			ft_putchar('\\');
-			sh->dec++;
 			check_endline(sh);
 			escape++;
 		}
 		ft_putchar(sh->comp_remain[sh->dec]);
 		check_endline(sh);
 	}
+	sh->dec += escape;
 	return (escape);
 }
 
