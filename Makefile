@@ -6,11 +6,11 @@
 #    By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/19 15:07:31 by jamerlin          #+#    #+#              #
-#    Updated: 2018/04/19 15:07:33 by jamerlin         ###   ########.fr        #
+#    Updated: 2018/04/20 21:51:08 by vboivin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	21sh
+NAME		=	42sh
 
 CC			=	gcc
 FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address

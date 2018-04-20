@@ -1368,3 +1368,5 @@ ls egrws
 cd wergas
 ls 4>&7
 exit
+ls 4>&7
+myman echo
