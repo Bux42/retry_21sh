@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:13:55 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:13:56 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/20 19:20:40 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int			resolve_relative_path(t_env **env, char *bin_path)
 	char correct_path[2048];
 	char *home;
 
+	ft_bzero(correct_path, 2048);
 	path_subcpy(bin_path, correct_path, 0, ft_strlen(bin_path));
 	if (ft_strlen(bin_path) > 1 &&
 			bin_path[0] == '.' && bin_path[1] == '/')
