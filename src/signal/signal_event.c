@@ -68,7 +68,7 @@ void		signal_init(void)
 	{
 		tab[0] = "/usr/bin/killall";
 		tab[1] = "-1";
-		tab[2] = "21sh";
+		tab[2] = "42sh";
 		tab[3] = NULL;
 		execve(tab[0], tab, NULL);
 	}

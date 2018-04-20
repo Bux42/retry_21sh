@@ -14,7 +14,7 @@
 
 void		is_a_directory(char *str)
 {
-	ft_putstr("21sh: is a directory: ");
+	ft_putstr("42sh: is a directory: ");
 	ft_putstr(str);
 }
 

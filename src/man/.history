@@ -1363,3 +1363,8 @@ ls
 exit
 /usr/bin/echo fsdaf
 exit
+ls
+ls egrws
+cd wergas
+ls 4>&7
+exit

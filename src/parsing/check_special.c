@@ -28,7 +28,7 @@ void		*special_error(t_inp **inp)
 {
 	t_inp	*cp;
 
-	write(2, "21sh: parse error near ", 23);
+	write(2, "42sh: parse error near ", 23);
 	if ((cp = (*inp)))
 	{
 		while (cp)

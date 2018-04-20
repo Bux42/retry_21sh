@@ -21,7 +21,7 @@ void	check_fd(t_sh *sh, int fd)
 	{
 		sve_fd(save_fd);
 		reset_fd(save_fd);
-		ft_putstr_fd("21sh: ", 2);
+		ft_putstr_fd("42sh: ", 2);
 		ft_putnbr_fd(fd, 2);
 		ft_putendl_fd(": bad file descriptor", 2);
 		sh->aggr_fail = 0;

@@ -20,7 +20,7 @@ void	errexit(char *str)
 
 void	print_err(int err, char *path)
 {
-	ft_putstr_fd("21sh: ", 2);
+	ft_putstr_fd("42sh: ", 2);
 	ft_putstr_fd(path, 2);
 	if (err == 1)
 		ft_putstr_fd(": No such file or directory\n", 2);
@@ -38,7 +38,7 @@ void	print_access_error(char *fullpath)
 		ft_putstr_fd("Permission denied\n", 2);
 	else
 	{
-		ft_putstr_fd("21sh: ", 2);
+		ft_putstr_fd("42sh: ", 2);
 		ft_putstr_fd(fullpath, 2);
 		ft_putstr_fd(": command not found\n", 2);
 	}

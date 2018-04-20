@@ -29,7 +29,7 @@ int			special_error_surrounding(t_inp **inp)
 
 	if ((cp = (*inp)))
 	{
-		ft_putstr_fd("21sh: check2:  parse error near ", 2);
+		ft_putstr_fd("42sh: check2:  parse error near ", 2);
 		while (cp)
 		{
 			ft_putchar_fd(cp->c, 2);
