@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:13:48 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:13:51 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/20 21:11:52 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t		path_subcpy(const char *source, char *dest,
 	size_t		i;
 
 	i = start;
-	while (i < start + len)
+	while (i < start + len && i < PATH_MAX - 10)
 	{
 		dest[i - start] = source[i];
 		++i;
