@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:32:56 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:32:57 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/20 19:37:15 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ int			inp_list_len(t_inp **inp)
 
 	if ((cp = (*inp)))
 	{
+		g_sh->ctrl_c = 0;
 		i = 0;
 		while (cp)
 		{
 			i++;
 			cp = cp->next;
 		}
+		g_sh->ctrl_c = 1;
 		return (i);
 	}
 	return (0);
