@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:13:48 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 11:44:14 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/21 11:55:21 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			dir_exists2(char *path)
 	struct stat		data;
 
 	if (access(path, F_OK) != 0)
-		return ( -1);
+		return (-1);
 	if (access(path, X_OK) != 0)
 		return (-1);
 	if (stat(path, &data) == -1)
