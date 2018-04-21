@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:11:31 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 12:08:18 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/21 20:04:24 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		get_beg(int *i, t_his **history, char **exec);
 int		last_command(t_sh *sh, t_inp **t);
 int		by_last(t_sh *sh, t_inp **t, int pos);
 int		history_exclaim(t_inp **inp, t_sh *sh);
+int		no_history(void);
 int		get_by_last(t_inp *inp, t_sh *sh, t_inp **input);
 int		get_by_first(t_inp *inp, t_sh *sh, t_inp **input);
 int		get_by_beg(t_inp *inp, t_sh *sh, t_inp **input);
