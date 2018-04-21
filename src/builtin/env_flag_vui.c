@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:14:16 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:14:17 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 12:14:11 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			flag_v_u_i(char ***tab, char **exec, int *verbose)
 	return (1);
 }
 
-int			flag_v(char **exec)
+int			get_flag(char **exec)
 {
 	int		i;
 	int		x;
@@ -65,5 +65,12 @@ int			flag_v(char **exec)
 				}
 			}
 		}
+	return (0);
+}
+
+int			flag_v(char **exec, char **args)
+{
+	if (get_flag(exec) == 1)
+		show_args(args);
 	return (0);
 }

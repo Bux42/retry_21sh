@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:11:31 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 11:44:12 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/21 12:08:18 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_env	*tab_in_env(char **tab);
 void	show_args(char **exec);
 int		erase_fg(int i);
 void	free_list(t_env **env);
-int		flag_v(char **exec);
+int		flag_v(char **exec, char **args);
 int		valid_name(char *str, char *builtin);
 
 /*

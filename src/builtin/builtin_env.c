@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:11:45 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 10:49:52 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/21 12:12:58 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ int			exec_cmd(char **tab, char **exec, t_sh *sh, t_env **env)
 
 	i = 127;
 	func = NULL;
-	if (flag_v(exec))
-		show_args(exec);
 	if ((func = get_builtin_function(exec[0])))
+	{
+		free_list(&sh->env);
 		return (sh->retval = func(exec, sh));
+	}
 	if ((path = command_path(env, exec[0], sh)))
 	{
 		if ((tmp = check_path_bin(path, sh)))
@@ -79,6 +80,7 @@ int			exec_cmd(char **tab, char **exec, t_sh *sh, t_env **env)
 			i = 127;
 		free(path);
 	}
+	free_list(&sh->env);
 	return (i);
 }
 
@@ -124,9 +126,9 @@ int			builtin_env(char **exec, t_sh *sh)
 		return (print_env_tab(tab));
 	new_env = sh->env;
 	sh->env = tab_in_env(tab);
+	flag_v(exec, &(exec[i]));
 	i = exec_cmd(tab, &(exec[i]), sh, &new_env);
 	env_free(tab);
-	free_list(&sh->env);
 	sh->env = new_env;
 	return (i);
 }
