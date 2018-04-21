@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:17:47 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 21:43:41 by vboivin          ###   ########.fr       */
+/*   Updated: 2018/04/21 22:08:41 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	run_cmd(char *fullpath, t_listc *cmd, t_sh *sh, char **env)
 	if (condition_is_valid(sh, cmd))
 	{
 		execve(fullpath, cmd->cont, env);
-		exit(1);
+		exit(0);
 	}
 	else
 		exit(WEXITSTATUS(sh->retval));
