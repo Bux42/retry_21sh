@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:15:26 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 19:44:07 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/21 20:40:49 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		history_exclaim(t_inp **inp, t_sh *sh)
 	quote = 0;
 	cp = *inp;
 	if (!sh->history || !sh->history->inp)
-		return (no_history());
+		return (-2);
 	while (cp && cp->c)
 	{
 		if (cp->c == '\'')
