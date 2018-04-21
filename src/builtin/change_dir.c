@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 19:43:21 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 13:19:36 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/21 13:20:24 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*try_pwd(t_env **env)
 			return (path);
 		else
 		{
-			fere(path);
+			free(path);
 			getcwd(buff, PATH_MAX);
 			return (ft_strdup(buff));
 		}
