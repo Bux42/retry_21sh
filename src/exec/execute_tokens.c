@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:17:32 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:17:33 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 21:53:55 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,18 @@ void	builtin_redir(t_listc *cp, int (*func)(char **, t_sh*), t_sh *sh)
 	close_tabtube(2, p);
 }
 
-int		condition_is_valid(t_sh *sh, t_listc *cmd)
+void	prepare_func(t_listc *cp, t_sh *sh)
 {
-	if (cmd->prev)
-	{
-		if (cmd->prev->sep_type & AND)
-			if (WEXITSTATUS(sh->retval) != 0 || sh->retval == 127)
-				return (0);
-		if (cmd->prev->sep_type & OR)
-			if (WEXITSTATUS(sh->retval) == 0 && sh->retval != 127)
-				return (0);
-	}
-	return (1);
+	int(*func)(char **, t_sh*);
+
+	func = cp->func;
+	(cp->redirs) ? builtin_redir(cp, func, sh) :
+		(sh->retval = func(cp->cont, sh));
 }
 
 void	execute_tokens(t_listc **tok, t_sh *sh)
 {
 	t_listc	*cp;
-	int		(*func)(char **, t_sh*);
 
 	if (!(cp = (*tok)))
 		return ;
@@ -73,20 +67,19 @@ void	execute_tokens(t_listc **tok, t_sh *sh)
 	{
 		sh->err = 0;
 		if (cp->func && cp->sep_type != PIPE && condition_is_valid(sh, cp))
-		{
-			func = cp->func;
-			(cp->redirs) ? builtin_redir(cp, func, sh) :
-				(sh->retval = func(cp->cont, sh));
-		}
+			prepare_func(cp, sh);
 		else if (cp->sep_type != 2 && condition_is_valid(sh, cp))
 			exec_cli(cp->cont[0], cp, sh);
-		else if (cp->sep_type & PIPE)
+		else if (cp->sep_type & PIPE && condition_is_valid(sh, cp))
 		{
 			prepare_pipe(cp);
 			exec_cli(cp->cont[0], cp, sh);
 			while (cp->next && cp->sep_type & PIPE)
 				cp = cp->next;
 		}
+		if (cp->sep_type & PIPE && !condition_is_valid(sh, cp))
+			while (cp && cp->sep_type & PIPE)
+				cp = cp->next;
 		cp = cp->next;
 	}
 }

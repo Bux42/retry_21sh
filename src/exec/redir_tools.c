@@ -6,11 +6,25 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:21:25 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 17:28:13 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 21:52:31 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/header.h"
+
+int		condition_is_valid(t_sh *sh, t_listc *cmd)
+{
+	if (cmd->prev)
+	{
+		if (cmd->prev->sep_type & AND)
+			if (WEXITSTATUS(sh->retval) != 0 || sh->retval == 127)
+				return (0);
+		if (cmd->prev->sep_type & OR)
+			if (WEXITSTATUS(sh->retval) == 0 && sh->retval != 127)
+				return (0);
+	}
+	return (1);
+}
 
 void	prepare_pipe(t_listc *cmd)
 {
