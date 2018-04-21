@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:29:18 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 19:06:40 by vboivin          ###   ########.fr       */
+/*   Updated: 2018/04/21 20:08:03 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,22 @@ void		free_closing(t_sh *sh, t_close **close)
 	t_close	*cp;
 	t_close *tmp;
 
-	if ((cp = (*close)))
+	cp = (*close);
+	while (g_sh->inpl && g_sh->inpl->previous)
 	{
-		while (g_sh->inpl && g_sh->inpl->previous)
-		{
-			free_list_from_beginning(&g_sh->inpl->inp);
-			g_sh->inpl = g_sh->inpl->previous;
-			free(g_sh->inpl->next);
-			g_sh->inpl->next = NULL;
-		}
 		free_list_from_beginning(&g_sh->inpl->inp);
-		while (cp)
-		{
-			tmp = cp;
-			cp = cp->next;
-			free(tmp);
-		}
-		sh->close = NULL;
+		g_sh->inpl = g_sh->inpl->previous;
+		free(g_sh->inpl->next);
+		g_sh->inpl->next = NULL;
 	}
+	free_list_from_beginning(&g_sh->inpl->inp);
+	while (cp)
+	{
+		tmp = cp;
+		cp = cp->next;
+		free(tmp);
+	}
+	sh->close = NULL;
 }
 
 void		signal_print_prompt(int inp)
@@ -54,7 +52,7 @@ void		signal_print_prompt(int inp)
 		g_sh->search = 0;
 		ft_putstr(tgetstr("ve", NULL));
 	}
-	else if (!g_sh->close)
+	else if (!g_sh->inpl->previous && !g_sh->close)
 		free_list_from_beginning(&g_sh->inpl->inp);
 	else
 		free_closing(g_sh, &g_sh->close);
