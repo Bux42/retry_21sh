@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:11:31 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 20:44:41 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/21 11:44:12 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		check_flag(int flag, char letter);
 int		parse_flags(char **exec, int *index);
 int		fix_root(char *path);
 int		dir_exists(char *path);
+int		dir_exists2(char *path);
 int		change_pwd(int flag, t_env **env, char *path, int err);
 
 /*

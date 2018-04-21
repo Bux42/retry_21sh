@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 19:43:21 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 19:43:23 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 11:47:44 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*try_pwd(t_env **env)
 	char	buff[PATH_MAX];
 	char	*path;
 
-	if ((path = get_specific_env("PWD=", env)))
+	if ((path = get_specific_env("PWD=", env)) && !dir_exists2(path))
 		return (path);
 	getcwd(buff, PATH_MAX);
 	return (ft_strdup(buff));
@@ -56,7 +56,9 @@ int			custom_chdir(char *path, int flag, t_env **env)
 
 	rights = 0;
 	if ((lstat(path, &st)) == -1)
+	{
 		return (err_msg("cd: no such file or directory: ", path, -1));
+	}
 	else
 	{
 		if (!(S_ISDIR(st.st_mode)) && !(S_ISLNK(st.st_mode)))
@@ -69,7 +71,7 @@ int			custom_chdir(char *path, int flag, t_env **env)
 			if (!rights)
 				return (err_msg("cd: permission denied: ", path, -1));
 			else if (check_link(path, flag, env) == -1)
-				return (err_msg("cd: permission denied :", path, -1));
+				return (-1);
 		}
 	}
 	return (0);

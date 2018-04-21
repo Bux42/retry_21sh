@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 19:43:58 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 19:43:59 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 11:42:05 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			change_pwd(int flag, t_env **env, char *path, int err)
 	if (err == 1)
 	{
 		free(oldpwd);
-		return (err_msg("cd: no such file or directory: ", getpwd, -1));
+		return (-1);
 	}
 	if (oldpwd)
 		set_env(env, "OLDPWD=", oldpwd);

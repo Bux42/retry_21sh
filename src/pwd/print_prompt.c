@@ -6,11 +6,12 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:29:08 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:29:10 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 11:53:40 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/header.h"
+#include "../builtin/builtin.h"
 
 void		prompt_colors(int i)
 {
@@ -47,7 +48,15 @@ void		try_pwd(t_sh *sh)
 
 	if ((path = get_specific_env("PWD=", &sh->env)))
 	{
-		ft_strcat(sh->pwd, path);
+		if (!dir_exists2(path))
+		{
+			ft_strcat(sh->pwd, path);
+		}
+		else
+		{
+			getcwd(buff, PATH_MAX);
+			ft_strcat(sh->pwd, buff);
+		}
 		free(path);
 	}
 	else
