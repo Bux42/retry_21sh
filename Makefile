@@ -6,7 +6,7 @@
 #    By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/19 15:07:31 by jamerlin          #+#    #+#              #
-#    Updated: 2018/04/20 21:51:08 by vboivin          ###   ########.fr        #
+#    Updated: 2018/04/21 18:58:26 by vboivin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -142,11 +142,21 @@ OBJS		=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB			=	$(words $(SRC_BASE))
 INDEX		=	0
 
+RED='\e[1;31m'
+GRN='\e[1;32m'
+YEL='\e[1;33m'
+BLU='\e[1;34m'
+MAG='\e[1;35m'
+CYN='\e[1;36m'
+END='\e[0m'
+
 all :
 	@make -C $(LIBFT_DIR)
+	@printf "libft compil:\t\t`printf $(GRN)`done\t✅`printf $(END)`\n"
 	@make -j $(NAME)
 
 $(NAME):		$(LIBFT_LIB) $(OBJ_DIR) $(OBJS)
+	@printf "\33[Kmain obj compil:\t`printf $(GRN)`done\t✅`printf $(END)`\n"
 	@$(CC) $(OBJS) -o $(NAME) \
 		-I $(INC_DIR) \
 		-I $(LIBFT_INC) \
@@ -154,7 +164,7 @@ $(NAME):		$(LIBFT_LIB) $(OBJ_DIR) $(OBJS)
 		$(LIBFT_LIB) \
 		$(FLAGS) $(D_FLAGS)
 	@strip -x $@
-	@printf "\r\033[48;5;15;38;5;25m✅  MAKE $(NAME)\033[0m\033[K\n"
+	@printf "main compilation:\t`printf $(GRN)`done\t✅`printf $(END)`\n"
 
 $(LIBFT_LIB):
 	@make -C $(LIBFT_DIR)
@@ -168,6 +178,7 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
 	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
+	@printf "\33[KCompiling `printf $(RED)`$<`printf $(END)`\r"
 	@$(CC) $(FLAGS) $(D_FLAGS) -MMD -c $< -o $@\
 		-I $(INC_DIR)\
 		-I $(LIBFT_INC)
@@ -175,14 +186,14 @@ $(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
 
 clean:			cleanlib
 	@rm -rf $(OBJ_DIR)
-	@printf "\r\033[38;5;202m✖ clean $(NAME).\033[0m\033[K\n"
+	@printf "\33[K`printf $(GRN)`Cleaning done\t\t\t✨`printf $(END)`\n"
 
 cleanlib:
 	@make -C $(LIBFT_DIR) clean
 
 fclean:			clean fcleanlib
 	@rm -f $(NAME)
-	@printf "\r\033[38;5;196m ❌ fclean $(NAME).\033[0m\033[K\n"
+	@printf "\33[K`printf $(GRN)`Crushing done\t\t\t🗑️`printf $(END)`\n"
 
 fcleanlib:		cleanlib
 	@make -C $(LIBFT_DIR) fclean
