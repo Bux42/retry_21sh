@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:30:25 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:30:26 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 18:30:25 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void		suicide_squad(int signo)
 {
 	char	*tab[3];
 
-	ft_putstr("Suicide son.");
+	ft_putstr("Suicide Pid: ");
+	ft_putnbr(getpid());
 	custom_return();
 	signo++;
 	tab[0] = "exit";

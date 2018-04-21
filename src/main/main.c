@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:23:37 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 17:25:49 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 18:31:27 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int			main(int ac, char **av, char **env)
 	add_builtin_completion(g_sh);
 	while (ac > -1 && read(1, g_sh->buff, 4) != -1)
 		check_pasted(g_sh);
-	ft_putstr("Could not read STDIN, quitting.");
+	ft_putstr_fd("Could not read STDIN, quitting.", 2);
 	custom_return();
 	return (0);
 }
