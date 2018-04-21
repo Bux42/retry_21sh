@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/11 19:08:48 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/11 19:08:49 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 21:09:30 by videsvau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ t_list	*ft_manage_fd(int fd, t_list **chain)
 
 void	join(t_list **alst, char *buff, int end)
 {
-	char	*ret;
+	char		*ret;
+	static int	total = 0;
 
+	total += ft_strlen(buff);
+	if (total > 30000)
+		return ;
 	ret = ft_strdup((*alst)->content);
 	free((*alst)->content);
 	if (((*alst)->content = (char*)malloc(sizeof(char)
