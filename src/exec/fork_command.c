@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:17:42 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/19 15:17:42 by jamerlin         ###   ########.fr       */
+/*   Updated: 2018/04/21 21:42:42 by vboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int			fork_command(char *path, char **exec, char **env)
 	{
 		signal_exec();
 		execve(path, exec, env);
+		exit(1);
 	}
 	signal(SIGINT, SIG_IGN);
 	waitpid(pid, &status, WUNTRACED);

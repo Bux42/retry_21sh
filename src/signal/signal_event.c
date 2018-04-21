@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:29:18 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 20:08:03 by videsvau         ###   ########.fr       */
+/*   Updated: 2018/04/21 21:44:22 by vboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void		signal_init_two_because_norm_lol(void)
 {
 	signal(SIGTTOU, SIG_IGN);
 	signal(SIGXCPU, SIG_IGN);
+	signal(SIGPROF, SIG_IGN);
+	signal(SIGUSR1, SIG_IGN);
 }
 
 void		signal_init(void)
@@ -75,6 +77,7 @@ void		signal_init(void)
 		tab[2] = "42sh";
 		tab[3] = NULL;
 		execve(tab[0], tab, NULL);
+		exit(9);
 	}
 	signal(SIGINT, &signal_print_prompt);
 	signal(SIGHUP, &suicide_squad);
@@ -88,8 +91,6 @@ void		signal_init(void)
 	signal(SIGCONT, SIG_IGN);
 	signal(SIGXFSZ, SIG_IGN);
 	signal(SIGVTALRM, SIG_IGN);
-	signal(SIGPROF, SIG_IGN);
-	signal(SIGUSR1, SIG_IGN);
 	signal_init_two_because_norm_lol();
 }
 
