@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 19:43:21 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 11:47:44 by drecours         ###   ########.fr       */
+/*   Updated: 2018/04/21 13:19:36 by drecours         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,18 @@ static char	*try_pwd(t_env **env)
 	char	buff[PATH_MAX];
 	char	*path;
 
-	if ((path = get_specific_env("PWD=", env)) && !dir_exists2(path))
-		return (path);
+	if ((path = get_specific_env("PWD=", env)))
+	{
+		if (!dir_exists2(path))
+			return (path);
+		else
+		{
+			fere(path);
+			getcwd(buff, PATH_MAX);
+			return (ft_strdup(buff));
+		}
+
+	}
 	getcwd(buff, PATH_MAX);
 	return (ft_strdup(buff));
 }
