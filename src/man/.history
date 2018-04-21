@@ -1370,3 +1370,5 @@ ls 4>&7
 exit
 ls 4>&7
 myman echo
+./42sh
+ls
