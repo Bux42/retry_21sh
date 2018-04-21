@@ -6,7 +6,7 @@
 /*   By: jamerlin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 15:29:18 by jamerlin          #+#    #+#             */
-/*   Updated: 2018/04/21 19:01:53 by vboivin          ###   ########.fr       */
+/*   Updated: 2018/04/21 19:06:40 by vboivin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void		signal_print_prompt(int inp)
 		free_closing(g_sh, &g_sh->close);
 }
 
+void		signal_init_two_because_norm_lol(void)
+{
+	signal(SIGTTOU, SIG_IGN);
+	signal(SIGXCPU, SIG_IGN);
+}
+
 void		signal_init(void)
 {
 	char	*tab[4];
@@ -86,8 +92,7 @@ void		signal_init(void)
 	signal(SIGVTALRM, SIG_IGN);
 	signal(SIGPROF, SIG_IGN);
 	signal(SIGUSR1, SIG_IGN);
-	signal(SIGTTOU, SIG_IGN);
-	signal(SIGXCPU, SIG_IGN);
+	signal_init_two_because_norm_lol();
 }
 
 void		signal_exec(void)
